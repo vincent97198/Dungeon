@@ -54,7 +54,7 @@ void Player::increaseStates(int maxHealth, int attack, int defense) {
 }
 
 void Player::changeRoom(Room *nextRoom) {
-    Player::previousRoom = Player::previousRoom;
+    Player::previousRoom = Player::currentRoom;
     Player::currentRoom = nextRoom;
 }
 

@@ -29,10 +29,11 @@ void Dungeon::chooseAction() {
             if (iter->second == "Move") handleMovement();
             else if (iter->second == "Check Status") Show_Status(Dungeon::player);
             else if (iter->second == "Gain the item on the floor") Pick_item(Dungeon::player);
-            else if (iter->second == "Fight!!!")    Fight(&player);
+            else if (iter->second == "Fight!!!") Fight(&player);
+            else if (iter->second == "Retreat~~~") Dungeon::player.changeRoom(Dungeon::player.getPreviousRoom());
         }
     }
 
-    if(!checkGameLogic())
+    if (!checkGameLogic())
         exit(0);
 }
