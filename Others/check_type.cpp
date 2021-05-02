@@ -20,4 +20,9 @@ namespace check_type {
         Equipment *equip = dynamic_cast<Equipment *>(item);
         return equip;
     }
+
+    Weapon *isWeaponType(Object *object) {
+        Weapon *weapon = dynamic_cast<Weapon *>(object);
+        return weapon;
+    }
 }

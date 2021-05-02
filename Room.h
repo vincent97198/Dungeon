@@ -18,6 +18,7 @@ private:
     Room *downRoom;
     Room *leftRoom;
     Room *rightRoom;
+    int up,down,left,right;
     bool Exit;
     int npc;
     int monster;
@@ -76,7 +77,16 @@ public:
 
     int getItemOnFloor() const;
 
+    int getUp() const;
+
+    int getDown() const;
+
+    int getLeft() const;
+
+    int getRight() const;
+
     void saveFile(ofstream&);
+    void loadFile(ifstream&);
 };
 
 #endif // ROOM_H_INCLUDED

@@ -25,6 +25,13 @@ class Player : public GameCharacter {
 private:
     Room *currentRoom;
     Room *previousRoom;
+    int cur, pre;
+public:
+    int getCur() const;
+
+    int getPre() const;
+
+private:
     Weapon *weapon;
     vector<Item *> inventory;
 public:
@@ -40,7 +47,7 @@ public:
 
     void setInventory(const vector<Item *> &inventory);
 
-    Item * getEquip() const;
+    Item *getEquip() const;
 
     void Equip(Equipment *equip);
 
@@ -57,6 +64,8 @@ public:
     void changeRoom(Room *);
 
     void saveFile(ofstream &);
+
+    void loadFile(ifstream &);
 };
 
 #endif // PLAYER_H_INCLUDED

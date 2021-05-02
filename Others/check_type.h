@@ -6,10 +6,14 @@
 #include "GameCharacter/Monster.h"
 #include "GameCharacter/NPC.h"
 #include "Equipment/Equipment.h"
+#include "Equipment/Weapon.h"
 
 class Item;
+
 class Object;
+
 class Monster;
+
 class NPC;
 
 namespace check_type {
@@ -20,6 +24,8 @@ namespace check_type {
     NPC *isNPCType(Object *);
 
     Equipment *isEquipmentType(Item *);
+
+    Weapon *isWeaponType(Object *);
 }
 
 #endif //NEW_CHECK_TYPE_H

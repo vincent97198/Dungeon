@@ -38,7 +38,9 @@ public:
 
     bool checkIsDead();
 
-    void saveFile(ofstream&);
+    void saveFile(ofstream &);
+
+    void loadFile(ifstream &);
 
     virtual void triggleEvent(GameCharacter *);
 };

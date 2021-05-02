@@ -8,6 +8,12 @@ namespace Tools {
                   [](unsigned char c) { return toupper(c); });
     }
 
+    int stringToint(string& str){
+        stringstream ss;    ss << str;
+        int ret;    ss >> ret;
+        return ret;
+    }
+
     bool check_input_logic_oneAlphabet(string &input, map<char, string> &Map) {
         try {
             string Warning;

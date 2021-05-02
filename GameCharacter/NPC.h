@@ -32,6 +32,8 @@ public:
     void triggerEvent(GameCharacter *);
 
     void saveFile(ofstream&);
+
+    void loadFile(ifstream&);
 };
 
 

@@ -18,7 +18,9 @@ public:
 
     ~Item() = default;
 
-    void saveFile(ofstream&);
+    void saveFile(ofstream &);
+
+    void loadFile(ifstream &);
 
     bool operator<(const Item &) const;
 

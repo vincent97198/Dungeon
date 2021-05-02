@@ -48,11 +48,41 @@ void NPC::triggerEvent(GameCharacter *character) {
 }
 
 void NPC::saveFile(ofstream &os) {
-    GameCharacter *base = dynamic_cast<GameCharacter *>(this);
-    base->saveFile(os);
+    GameCharacter base = *this;
+    base.saveFile(os);
 
-    os << "NPC script: \n" << script << '\n'
-    << "NPC commodity: \n" << commodity.size() << '\n';
-    for(auto iter:commodity)
+    os << script << '\n'
+    << commodity.size() << '\n';
+    for(auto iter:commodity){
+        if (check_type::isWeaponType(iter) != nullptr)
+            os << "Weapon\n";
+        else if (check_type::isItemType(iter) != nullptr)
+            os << "Item\n";
         iter->saveFile(os);
+    }
 }
+
+void NPC::loadFile(ifstream & os) {
+    GameCharacter *base = new GameCharacter();
+    base->loadFile(os);
+    this->setMaxHealth(base->getMaxHealth());
+    this->setCurrentHealth(base->getCurrentHealth());
+    this->setAttack(base->getAttack());
+    this->setDefense(base->getDefense());
+    this->setName(base->getName());
+    this->setTag(base->getTag());
+
+    int SZ;
+    os >> script >> SZ;
+    string type;
+    for(int i=0;i<SZ;++i){
+        os >> type;
+        Item *item;
+        if (type == "Weapon")
+            item = new Weapon();
+        else if (type == "Item")
+            item = new Item();
+        commodity.insert(item);
+    }
+}
+

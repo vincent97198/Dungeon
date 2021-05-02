@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -29,8 +30,8 @@ public:
 
     virtual ~Object() = default;
 
-    void saveFile(ofstream& os);
-
+    virtual void saveFile(ofstream& os);
+    virtual void loadFile(ifstream&);
 };
 
 #endif // OBJECT_H_INCLUDED

@@ -84,16 +84,63 @@ Item *Player::getEquip() const {
 }
 
 void Player::saveFile(ofstream &os) {
-    GameCharacter *base = static_cast<GameCharacter *>(this);
-    base->saveFile(os);
+    GameCharacter base = *this;
+    base.saveFile(os);
 
-    os << "Current Room: \n" << currentRoom->getIndex() << '\n'
-       << "Previous Room: \n" << (previousRoom == nullptr ? -1 : previousRoom->getIndex()) << '\n'
-       << "Weapon: \n";
-    if(weapon!=nullptr)
+    os << currentRoom->getIndex() << '\n'
+       << (previousRoom == nullptr ? -1 : previousRoom->getIndex()) << '\n';
+    if (weapon != nullptr) {
+        os << "Weapon\n";
         weapon->saveFile(os);
+    } else os << "noWeapon\n";
 
-    os << "Inventory: \n" << inventory.size() << '\n';
-    for (auto iter:inventory)
+    os << inventory.size() << '\n';
+    for (auto iter:inventory) {
+        if (check_type::isWeaponType(iter) != nullptr)
+            os << "Weapon\n";
+        else if (check_type::isItemType(iter) != nullptr)
+            os << "Item\n";
         iter->saveFile(os);
+    }
+}
+
+void Player::loadFile(ifstream &os) {
+    GameCharacter *base = new GameCharacter();
+    base->loadFile(os);
+    this->setMaxHealth(base->getMaxHealth());
+    this->setCurrentHealth(base->getCurrentHealth());
+    this->setAttack(base->getAttack());
+    this->setDefense(base->getDefense());
+    this->setName(base->getName());
+    this->setTag(base->getTag());
+
+    os >> cur >> pre;
+
+    string type;
+    os >> type;
+    if (type == "Weapon") {
+        weapon = new Weapon();
+        weapon->loadFile(os);
+    }
+
+    int SZ;
+    os >> SZ;
+    for (int i = 0; i < SZ; ++i) {
+        os >> type;
+        Item *item;
+        if (type == "Weapon")
+            item = new Weapon();
+        else if (type == "Item")
+            item = new Item();
+        item->loadFile(os);
+        inventory.emplace_back(item);
+    }
+}
+
+int Player::getCur() const {
+    return cur;
+}
+
+int Player::getPre() const {
+    return pre;
 }

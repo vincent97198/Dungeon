@@ -9,11 +9,13 @@ private:
 public:
     Weapon();
 
-    Weapon(string name,int Durability,int attack);
+    Weapon(string name, int Durability, int attack);
 
     int getAttack() const;
 
-    void saveFile(ofstream&);
+    void saveFile(ofstream &);
+
+    void loadFile(ifstream &);
 };
 
 

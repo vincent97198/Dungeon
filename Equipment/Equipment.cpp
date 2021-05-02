@@ -23,8 +23,17 @@ int Equipment::getDurability() const {
 }
 
 void Equipment::saveFile(ofstream &os) {
-    Item *base = dynamic_cast<Item *>(this);
-    base->saveFile(os);
+    Item base = *this;
+    base.saveFile(os);
 
-    os << "Durability: \n" << Durability << '\n';
+    os << Durability << '\n';
+}
+
+void Equipment::loadFile(ifstream &os) {
+    Item *base = new Item();
+    base->loadFile(os);
+    this->setName(base->getName());
+    this->setTag(base->getTag());
+
+    os >> Durability;
 }

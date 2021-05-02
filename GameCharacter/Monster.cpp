@@ -40,8 +40,21 @@ void Monster::triggerEvent(GameCharacter *Enemy) {
 }
 
 void Monster::saveFile(ofstream &os) {
-    GameCharacter *base = dynamic_cast<GameCharacter *>(this);
-    base->saveFile(os);
+    GameCharacter base = *this;
+    base.saveFile(os);
 
-    os << "Monster SAY: \n" << SAY << '\n';
+    os << SAY << '\n';
+}
+
+void Monster::loadFile(ifstream &os) {
+    GameCharacter *base = new GameCharacter();
+    base->loadFile(os);
+    this->setMaxHealth(base->getMaxHealth());
+    this->setCurrentHealth(base->getCurrentHealth());
+    this->setAttack(base->getAttack());
+    this->setDefense(base->getDefense());
+    this->setName(base->getName());
+    this->setTag(base->getTag());
+
+    os >> SAY;
 }

@@ -31,6 +31,11 @@ bool Object::operator<(const Object &object) const {
 }
 
 void Object::saveFile(ofstream &os) {
-    os << "Name: \n" << Object::name << '\n'
-       << "Tag: \n" << Object::tag << '\n';
+    os << Object::name << '\n'
+       << Object::tag << '\n';
+}
+
+void Object::loadFile(ifstream &os) {
+    os >> name
+       >> tag;
 }

@@ -16,7 +16,14 @@ ostream &operator<<(ostream &os, const Item *item) {
     return os;
 }
 
-void Item::saveFile(ofstream & os) {
-    Object *base=dynamic_cast<Object*>(this);
-    base->saveFile(os);
+void Item::saveFile(ofstream &os) {
+    Object base = *this;
+    base.saveFile(os);
+}
+
+void Item::loadFile(ifstream &os) {
+    Object *base = new Object();
+    base->loadFile(os);
+    this->setName(base->getName());
+    this->setTag(base->getTag());
 }

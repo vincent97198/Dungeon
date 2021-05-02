@@ -19,6 +19,8 @@ namespace Tools {
 
     void stringToUpper(string &str);
 
+    int stringToint(string &str);
+
     bool check_input_logic_oneAlphabet(string &input, map<char, string> &Map);
 
     bool check_input_logic_multi_int(string &input, map<int, Object *> &Map);
