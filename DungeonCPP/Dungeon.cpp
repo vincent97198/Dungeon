@@ -27,20 +27,17 @@ ifstream &operator>>(ifstream &os, string &ret) {
 }
 
 
-void Dungeon::startGame() {
-    cout << Color::Magenta << "Use record?[y/n]" << Color::Default;
-    string str;
-    getline(cin,str);
-    if (str[0] == 'y')
+void Dungeon::startGame(bool record) {
+    if(record)
         Record::loadFromFile(&player, Dungeon::rooms);
-    else {
+    else{
         createMap(10);
         createPlayer();
     }
 }
 
-void Dungeon::runDungeon() {
-    startGame();
+void Dungeon::runDungeon(bool record) {
+    startGame(record);
     do {
         chooseAction();
     } while (checkGameLogic());

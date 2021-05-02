@@ -16,6 +16,7 @@ void Dungeon::build_Action_Map(map<char, string> &Action_Map) {
             Action_Map[Action_index++] = "Gain the item in the chest";
     }
     Action_Map[Action_index++] = "Save to file";
+    Action_Map[Action_index++] = "Quit";
 }
 
 void Dungeon::chooseAction() {
@@ -32,7 +33,13 @@ void Dungeon::chooseAction() {
             else if (iter->second == "Fight!!!") Fight(&player);
             else if (iter->second == "Retreat~~~") Dungeon::player.changeRoom(Dungeon::player.getPreviousRoom());
             else if (iter->second == "Talk to NPC") Talk_to_NPC(&player);
-            else if (iter->second == "Save to file") Record::saveToFile(&player,rooms);
+            else if (iter->second == "Save to file") Record::saveToFile(&player, rooms);
+            else if (iter->second == "Quit"){
+                cout
+                <<"=======" << Color::Yellow << "Closed" << Color::Default << "======="
+                << '\n';
+                exit(0);
+            }
         }
     }
 

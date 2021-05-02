@@ -53,7 +53,7 @@ private:
 
     /* Deal with all game initial setting       */
     /* Including create player, create map etc  */
-    void startGame();
+    void startGame(bool);
 
     /* Deal with the player's action     */
     /* including showing the action list */
@@ -68,7 +68,7 @@ private:
 public:
 
     /* Deal with the whole game process */
-    void runDungeon();
+    void runDungeon(bool);
 };
 
 
