@@ -70,6 +70,12 @@ public:
 
     bool isItemOnFloor() const;
 
+    int getNpc() const;
+
+    int getMonster() const;
+
+    int getItemOnFloor() const;
+
 
 };
 

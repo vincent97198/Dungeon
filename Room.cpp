@@ -114,4 +114,16 @@ bool Room::isItemOnFloor() const {
     return item_on_floor > 0;
 }
 
+int Room::getNpc() const {
+    return npc;
+}
+
+int Room::getMonster() const {
+    return monster;
+}
+
+int Room::getItemOnFloor() const {
+    return item_on_floor;
+}
+
 
