@@ -12,6 +12,10 @@ private:
     int Durability;
 public:
 
+    int getDurability() const;
+
+    void setDurability(int);
+
     Equipment();
 
     Equipment(string, string);
