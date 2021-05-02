@@ -17,7 +17,7 @@ void Dungeon::handleMovement() {
     map<char, string> Movement;
     build_Movement_Map(Movement);
 
-    char type = Ask_oneAlphabet("Where do you want to go?", Movement);
+    char type = Ask::Ask_oneAlphabet("Where do you want to go?", Movement);
 
     switch (type) {
         case 'W':

@@ -24,6 +24,8 @@ public:
 
     Object(string, string);
 
+    bool operator<(const Object &) const;
+
     virtual ~Object() = default;
 
 };

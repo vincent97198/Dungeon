@@ -3,41 +3,34 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <set>
 #include "GameCharacter/GameCharacter.h"
 #include "GameCharacter/Player.h"
 #include "Item.h"
+#include "Others/Ask.h"
 
 using namespace std;
 
-class Item;
+class Object;
 
 class NPC : public GameCharacter {
 private:
     string script;
-    vector<Item> commodity;
+    set<Item*> commodity;
+
+    void build_NPC_commodity_Map(map<int,Object*> &MAP);
+
+    void popCommodity(Item*);
+
 public:
     NPC();
 
-    NPC(string, string, vector<Item>);
+    NPC(string, string, set<Item*>);
 
     ~NPC() = default; // 亂寫
 
-    void listCommodity(); /*print all the Item in this NPC*/
-
-    /* Virtual function that you need to complete   */
-    /* In NPC, this function should deal with the   */
-    /* transaction in easy implementation           */
     void triggerEvent(GameCharacter *);
 
-    /* Set & Get function*/
-    void setScript(string);
-
-    void setCommodity(vector<Item>);
-
-    string getScript();
-
-    vector<Item> getCommodity();
 };
 
 

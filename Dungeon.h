@@ -12,6 +12,7 @@
 #include "Record.h"
 #include "Others/check_type.h"
 #include "Others/programming_Tools.h"
+#include "Others/Ask.h"
 
 using namespace std;
 
@@ -26,19 +27,23 @@ private:
 
     void Fight(Player *);
 
+    void Talk_to_NPC(Player *player);
+
     string AskName();
 
     void build_Movement_Map(map<char, string> &);
 
     void build_Action_Map(map<char, string> &);
 
-    void build_pick_item_Map(map<int, string> &);
+    void build_pick_item_Map(map<int, Object*> &);
 
     void build_Monster_Map(vector<Monster *> &);
 
+    void build_NPC_Map(map<char, Object*> &MAP);
+
     char Ask_oneAlphabet(string, map<char, string> &);
 
-    void Ask_multi_int(string, map<int, string> &, vector<int> &);
+    void Ask_multi_int(string, map<int, Object*> &, vector<int> &);
 
 
     /*Dungeon();*/

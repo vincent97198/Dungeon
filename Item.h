@@ -14,9 +14,11 @@ public:
 
     Item();
 
-    Item(string,string);
+    Item(string, string);
 
     ~Item() = default;
+
+    bool operator<(const Item &) const;
 
     friend ostream &operator<<(ostream &os, const Item *item);
 };

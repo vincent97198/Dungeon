@@ -24,7 +24,7 @@ private:
     int item_on_floor;
 
     int index;
-    set<Object *> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
+    set<Object*> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
 
     void setBoolean(Object *, bool);
 public:
@@ -36,7 +36,7 @@ public:
 
     /* Set & Get function*/
 
-    set<Object *> getObjects();
+    set<Object*> getObjects();
 
     Room *getUpRoom() const;
 

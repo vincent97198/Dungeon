@@ -26,7 +26,25 @@ namespace Tools {
         }
     }
 
-    bool check_input_logic_multi_int(string &input, map<int, string> &Map) {
+    bool check_input_logic_oneAlphabet_Object(string &input,map<char,Object*> &Map){
+        try {
+            string Warning;
+            if (input.empty())
+                throw (Warning = "You didn't enter anything!");
+            else if (input.size() > 1)
+                throw (Warning = "Please input exactly \"one\" alphabet");
+            else if (Map.find(input[0]) == Map.end())
+                throw (Warning = "You CANNOT do this action");
+            else
+                return true;
+        }
+        catch (string Warning) {
+            cout << Color::RED << Warning << '\n' << Color::Default;
+            return false;
+        }
+    }
+
+    bool check_input_logic_multi_int(string &input, map<int, Object*> &Map) {
         try {
             string Warning;
             if (input.empty()) throw (Warning = "You didn't enter anything!");

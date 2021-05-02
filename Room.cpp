@@ -52,10 +52,15 @@ void Room::setBoolean(Object *newObject, bool op) {
             ++monster;
         else
             --monster;
+    } else if (check_type::isNPCType(newObject)!=nullptr){
+        if(op)
+            ++npc;
+        else
+            --npc;
     }
 }
 
-set<Object *> Room::getObjects() {
+set<Object*> Room::getObjects() {
     return Room::objects;
 }
 

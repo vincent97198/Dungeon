@@ -25,3 +25,7 @@ Object::Object(string name, string tag) {
     Object::name = name;
     Object::tag = tag;
 }
+
+bool Object::operator<(const Object &object) const {
+    return this->getName() < object.getName();
+}
