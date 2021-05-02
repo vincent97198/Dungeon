@@ -1,6 +1,8 @@
 #ifndef NEW_CONSOLECOLOR_H
 #define NEW_CONSOLECOLOR_H
 #include <ostream>
+#include <thread>
+#include <chrono>
 
 namespace Color {
     enum frontColor{
@@ -10,7 +12,7 @@ namespace Color {
         Green = 32,
         Yellow = 33,
         Blue = 34,
-        Magenta = 35,
+        Purple = 35,
         Cyan = 36,
         White = 37
     };

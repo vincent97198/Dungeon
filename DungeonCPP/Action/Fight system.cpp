@@ -8,6 +8,8 @@ void Dungeon::build_Monster_Map(vector<Monster *> &MAP) {
 }
 
 void Dungeon::Fight(Player *player) {
+    cout << Screen::Shining << Color::Yellow << "Fighting!!!" << endl << Color::Default << Screen::Closed;
+
     vector<Monster *> monster_set;
     build_Monster_Map(monster_set);
 
@@ -18,4 +20,5 @@ void Dungeon::Fight(Player *player) {
     }
 
     cout << Color::Yellow << "Fight END!!!\n" << Color::Default;
+    cout << Screen::Clear;
 }

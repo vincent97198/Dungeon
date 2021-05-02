@@ -2,6 +2,7 @@
 
 namespace Ask {
     char Ask_oneAlphabet(string output, map<char, string> &MAP) {
+        cout << endl;
         cout << Color::Blue << output << Color::Default << '\n';
         for (auto &iter:MAP)
             cout << '(' << iter.first << ')' << '\t' << iter.second << '\n';
@@ -14,6 +15,7 @@ namespace Ask {
     }
 
     char Ask_oneAlphabet_Object(string output, map<char, Object *> &MAP) {
+        cout << endl;
         cout << Color::Blue << output << Color::Default << '\n';
         for (auto &iter:MAP)
             cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\n';
@@ -26,8 +28,9 @@ namespace Ask {
     }
 
     void Ask_multi_int(string output, map<int, Object *> &MAP, vector<int> &outputType) {
+        cout << endl;
         cout << Color::Blue << output << Color::Default << '\n';
-        cout << Color::Magenta << "輸入括號裡的編號，可以一次輸入多個整數，多個整數請以空格隔開\n" << Color::Default;
+        cout << Color::Purple << "輸入括號裡的編號，可以一次輸入多個整數，多個整數請以空格隔開\n" << Color::Default;
 
         for (auto &iter:MAP)
             cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\n';

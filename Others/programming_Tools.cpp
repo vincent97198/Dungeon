@@ -4,8 +4,8 @@ namespace Tools {
     mt19937_64 RANDOM(time(NULL));
 
     void stringToUpper(string &str) {
-        transform(str.begin(), str.end(), str.begin(),
-                  [](unsigned char c) { return toupper(c); });
+        for(int i=0;i<str.size();++i)
+            str[i]=toupper(str[i]);
     }
 
     int stringToint(string& str){

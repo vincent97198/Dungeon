@@ -23,7 +23,7 @@ void Dungeon::chooseAction() {
     map<char, string> Action;
     build_Action_Map(Action);
 
-    char type = Ask::Ask_oneAlphabet("What do you want to do?", Action);
+    char type = Ask::Ask_oneAlphabet("=======Action=======", Action);
 
     for (auto iter = Action.begin(); iter != Action.end(); ++iter) {
         if (type == iter->first) {
@@ -34,10 +34,9 @@ void Dungeon::chooseAction() {
             else if (iter->second == "Retreat~~~") Dungeon::player.changeRoom(Dungeon::player.getPreviousRoom());
             else if (iter->second == "Talk to NPC") Talk_to_NPC(&player);
             else if (iter->second == "Save to file") Record::saveToFile(&player, rooms);
-            else if (iter->second == "Quit"){
-                cout
-                <<"=======" << Color::Yellow << "Closed" << Color::Default << "======="
-                << '\n';
+            else if (iter->second == "Quit") {
+                cout << Color::Yellow << "=======Closed=======" << Color::Default
+                     << '\n';
                 exit(0);
             }
         }

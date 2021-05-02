@@ -17,7 +17,7 @@ void Dungeon::handleMovement() {
     map<char, string> Movement;
     build_Movement_Map(Movement);
 
-    char type = Ask::Ask_oneAlphabet("Where do you want to go?", Movement);
+    char type = Ask::Ask_oneAlphabet("=======Movement=======", Movement);
 
     switch (type) {
         case 'W':
@@ -35,4 +35,6 @@ void Dungeon::handleMovement() {
         case 'N':
             break;
     }
+    cout << Screen::Shining << Color::Yellow << "Walking" << endl << Screen::Closed;
+    cout << Screen::Clear;
 }

@@ -23,7 +23,7 @@ namespace Menu {
                 if (iter->second == "Start Game") dungeon.runDungeon(false);
                 else if (iter->second == "Load") dungeon.runDungeon(true);
                 else if (iter->second == "Quit") {
-                    cout << "========" << Color::Yellow << "Closed" << Color::Default << "========"
+                    cout << Color::Yellow << "=======Closed=======" << Color::Default
                          << '\n';
                     exit(0);
                 }

@@ -18,13 +18,12 @@ void NPC::build_NPC_commodity_Map(map<int, Object *> &MAP) {
 }
 
 void NPC::triggerEvent(GameCharacter *character) {
-    cout << Color::Green << script << Color::Default << '\n';
+    cout << Color::Green << NPC::getName() << " says: " << script << Color::Default << '\n' << endl;
 
     if (!NPC::commodity.empty()) {
         map<int, Object *> commodity_Map;
         build_NPC_commodity_Map(commodity_Map);
 
-        /*cout << (commodity_Map.begin()->second->getName()) << '\n';*/
         vector<int> input;
         Ask::Ask_multi_int("What do you want to buy?", commodity_Map, input);
 
@@ -45,6 +44,7 @@ void NPC::triggerEvent(GameCharacter *character) {
             player->addItem(item);
         }
     }
+    cout << Screen::Clear;
 }
 
 void NPC::saveFile(ofstream &os) {

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <algorithm>
 #include "Object.h"
 #include "Others/programming_Tools.h"
 #include "consoleColor.h"

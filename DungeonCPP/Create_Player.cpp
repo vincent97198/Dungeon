@@ -1,7 +1,8 @@
 #include "Dungeon.h"
 
 string Dungeon::AskName() {
-    cout << "What's your name?\n";
+    cout << endl;
+    cout << Color::Blue << "What's your name?\n" << Color::Default;
     string name;
     getline(cin, name);
     return name;

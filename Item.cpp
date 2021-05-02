@@ -10,7 +10,7 @@ bool Item::operator<(const Item &item) const {
 
 ostream &operator<<(ostream &os, const Item *item) {
     if (item == nullptr)
-        os << "Empty";
+        os << Color::Cyan <<  "Empty" << Color::Default;
     else
         os << item->getName();
     return os;
