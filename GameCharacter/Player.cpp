@@ -36,6 +36,7 @@ Player::Player(string name, int maxHealth, int attack, int defense, Room *curren
                                                                                                        attack,
                                                                                                        defense) {
     Player::currentRoom = currentRoom;
+    Player::previousRoom = nullptr;
     Player::inventory.clear();
     Player::weapon = nullptr;
 }
@@ -82,4 +83,17 @@ Item *Player::getEquip() const {
     return dynamic_cast<Item *>(Player::weapon);
 }
 
+void Player::saveFile(ofstream &os) {
+    GameCharacter *base = static_cast<GameCharacter *>(this);
+    base->saveFile(os);
 
+    os << "Current Room: \n" << currentRoom->getIndex() << '\n'
+       << "Previous Room: \n" << (previousRoom == nullptr ? -1 : previousRoom->getIndex()) << '\n'
+       << "Weapon: \n";
+    if(weapon!=nullptr)
+        weapon->saveFile(os);
+
+    os << "Inventory: \n" << inventory.size() << '\n';
+    for (auto iter:inventory)
+        iter->saveFile(os);
+}

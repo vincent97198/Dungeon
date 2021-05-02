@@ -53,4 +53,14 @@ GameCharacter::GameCharacter(string name, string tag, int maxHealth, int attack,
     GameCharacter::defense = defense;
 }
 
-void GameCharacter::triggleEvent(GameCharacter * tmp) {}
+void GameCharacter::triggleEvent(GameCharacter *) {}
+
+void GameCharacter::saveFile(ofstream &os) {
+    Object *base = dynamic_cast<Object *>(this);
+    base->saveFile(os);
+
+    os << "currentHealth: \n" << currentHealth << '\n'
+       << "MaxHealth: \n" << maxHealth << '\n'
+       << "Attack: \n" << attack << '\n'
+       << "Defense: \n" << defense << '\n';
+}

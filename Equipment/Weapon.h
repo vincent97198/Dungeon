@@ -12,6 +12,8 @@ public:
     Weapon(string name,int Durability,int attack);
 
     int getAttack() const;
+
+    void saveFile(ofstream&);
 };
 
 

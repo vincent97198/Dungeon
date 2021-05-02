@@ -15,3 +15,8 @@ ostream &operator<<(ostream &os, const Item *item) {
         os << item->getName();
     return os;
 }
+
+void Item::saveFile(ofstream & os) {
+    Object *base=dynamic_cast<Object*>(this);
+    base->saveFile(os);
+}

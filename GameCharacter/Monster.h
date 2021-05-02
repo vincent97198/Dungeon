@@ -22,6 +22,8 @@ public:
     ~Monster() = default; //亂寫
 
     void triggerEvent(GameCharacter *);
+
+    void saveFile(ofstream& os);
 };
 
 

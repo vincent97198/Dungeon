@@ -29,3 +29,8 @@ Object::Object(string name, string tag) {
 bool Object::operator<(const Object &object) const {
     return this->getName() < object.getName();
 }
+
+void Object::saveFile(ofstream &os) {
+    os << "Name: \n" << Object::name << '\n'
+       << "Tag: \n" << Object::tag << '\n';
+}

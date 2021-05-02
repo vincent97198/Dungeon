@@ -76,7 +76,7 @@ public:
 
     int getItemOnFloor() const;
 
-
+    void saveFile(ofstream&);
 };
 
 #endif // ROOM_H_INCLUDED

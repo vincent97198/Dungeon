@@ -38,3 +38,10 @@ void Monster::triggerEvent(GameCharacter *Enemy) {
     else
         cout << Color::Blue << Enemy->getName() << " is dead\n" << Color::Default;
 }
+
+void Monster::saveFile(ofstream &os) {
+    GameCharacter *base = dynamic_cast<GameCharacter *>(this);
+    base->saveFile(os);
+
+    os << "Monster SAY: \n" << SAY << '\n';
+}

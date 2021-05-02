@@ -16,3 +16,8 @@ int Weapon::getAttack() const {
     return attack;
 }
 
+void Weapon::saveFile(ofstream &os){
+    Equipment* base=dynamic_cast<Equipment*>(this);
+    base->saveFile(os);
+    os << "Weapon Attack: \n" << attack << '\n';
+}

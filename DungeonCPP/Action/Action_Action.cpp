@@ -31,7 +31,8 @@ void Dungeon::chooseAction() {
             else if (iter->second == "Gain the item in the chest") Pick_item(Dungeon::player);
             else if (iter->second == "Fight!!!") Fight(&player);
             else if (iter->second == "Retreat~~~") Dungeon::player.changeRoom(Dungeon::player.getPreviousRoom());
-            else if(iter->second == "Talk to NPC") Talk_to_NPC(&player);
+            else if (iter->second == "Talk to NPC") Talk_to_NPC(&player);
+            else if (iter->second == "Save to file") Record::saveToFile(&player,rooms);
         }
     }
 

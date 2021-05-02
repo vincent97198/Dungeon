@@ -23,6 +23,8 @@ public:
     Equipment(string, int);
 
     ~Equipment() = default;
+
+    void saveFile(ofstream&);
 };
 
 #endif //NEW_EQUIPMENT_H

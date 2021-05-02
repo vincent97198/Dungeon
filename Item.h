@@ -18,6 +18,8 @@ public:
 
     ~Item() = default;
 
+    void saveFile(ofstream&);
+
     bool operator<(const Item &) const;
 
     friend ostream &operator<<(ostream &os, const Item *item);

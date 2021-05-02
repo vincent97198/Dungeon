@@ -21,3 +21,10 @@ void Equipment::setDurability(int durability) {
 int Equipment::getDurability() const {
     return Durability;
 }
+
+void Equipment::saveFile(ofstream &os) {
+    Item *base = dynamic_cast<Item *>(this);
+    base->saveFile(os);
+
+    os << "Durability: \n" << Durability << '\n';
+}

@@ -41,11 +41,6 @@ private:
 
     void build_NPC_Map(map<char, Object*> &MAP);
 
-    char Ask_oneAlphabet(string, map<char, string> &);
-
-    void Ask_multi_int(string, map<int, Object*> &, vector<int> &);
-
-
     /*Dungeon();*/
     /* Create a new player, and give him/her basic status */
     void createPlayer();

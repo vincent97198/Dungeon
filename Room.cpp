@@ -52,15 +52,15 @@ void Room::setBoolean(Object *newObject, bool op) {
             ++monster;
         else
             --monster;
-    } else if (check_type::isNPCType(newObject)!=nullptr){
-        if(op)
+    } else if (check_type::isNPCType(newObject) != nullptr) {
+        if (op)
             ++npc;
         else
             --npc;
     }
 }
 
-set<Object*> Room::getObjects() {
+set<Object *> Room::getObjects() {
     return Room::objects;
 }
 
@@ -126,4 +126,18 @@ int Room::getItemOnFloor() const {
     return item_on_floor;
 }
 
+void Room::saveFile(ofstream &os) {
+    os << "Room index: \n" << index << '\n'
+       << "Room upRoom: \n" << (upRoom == nullptr ? -1 : upRoom->getIndex()) << '\n'
+       << "Room downRoom: \n" << (downRoom == nullptr ? -1 : downRoom->getIndex()) << '\n'
+       << "Room leftRoom: \n" << (leftRoom == nullptr ? -1 : leftRoom->getIndex()) << '\n'
+       << "Room rightRoom: \n" << (rightRoom == nullptr ? -1 : rightRoom->getIndex()) << '\n'
+       << "Room isExit: \n" << Exit << '\n'
+       << "Room number of npc: \n" << npc << '\n'
+       << "Room number of monster: \n" << monster << '\n'
+       << "Room the number of item in the chest: \n" << item_on_floor << '\n'
+       << "Object in Room: \n";
 
+    for(auto iter:objects)
+        iter->saveFile(os);
+}

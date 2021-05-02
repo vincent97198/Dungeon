@@ -6,7 +6,7 @@ NPC::NPC() :
     NPC::commodity.clear();
 }
 
-NPC::NPC(string name, string script, set<Item*> commodity) :
+NPC::NPC(string name, string script, set<Item *> commodity) :
         GameCharacter(name, "NPC", INT32_MAX, 0, INT32_MAX),
         script(script),
         commodity(std::move(commodity)) {}
@@ -29,7 +29,7 @@ void NPC::triggerEvent(GameCharacter *character) {
         Ask::Ask_multi_int("What do you want to buy?", commodity_Map, input);
 
         for (int POP:input) {
-            Item *item= dynamic_cast<Item*>(commodity_Map[POP]);
+            Item *item = dynamic_cast<Item *>(commodity_Map[POP]);
             NPC::commodity.erase(item);
 
             Player *player;
@@ -47,4 +47,12 @@ void NPC::triggerEvent(GameCharacter *character) {
     }
 }
 
+void NPC::saveFile(ofstream &os) {
+    GameCharacter *base = dynamic_cast<GameCharacter *>(this);
+    base->saveFile(os);
 
+    os << "NPC script: \n" << script << '\n'
+    << "NPC commodity: \n" << commodity.size() << '\n';
+    for(auto iter:commodity)
+        iter->saveFile(os);
+}

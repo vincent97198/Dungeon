@@ -55,6 +55,8 @@ public:
     void increaseStates(int, int, int);
 
     void changeRoom(Room *);
+
+    void saveFile(ofstream &);
 };
 
 #endif // PLAYER_H_INCLUDED

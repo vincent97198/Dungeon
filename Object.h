@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -27,6 +28,8 @@ public:
     bool operator<(const Object &) const;
 
     virtual ~Object() = default;
+
+    void saveFile(ofstream& os);
 
 };
 
