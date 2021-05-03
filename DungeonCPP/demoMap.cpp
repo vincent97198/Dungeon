@@ -85,7 +85,8 @@ void Dungeon::createMap(int mapSize, int Difficult) {
     //assign NPC
     for (int i = 0; i < (4 - Difficult * Long); ++i) {
         set<Item *> commodity;
-        for (int j = 0; j < Tools::gainRandomNumber(0, 4 - Difficult); ++i) {
+        int numberOfItem = Tools::gainRandomNumber(0, 4 - Difficult);
+        for (int j = 0; j < numberOfItem; ++j) {
             Item *item = new Item();
             commodity.insert(item);
         }
