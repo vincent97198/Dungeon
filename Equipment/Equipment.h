@@ -27,6 +27,7 @@ public:
     void saveFile(ofstream&);
 
     void loadFile(ifstream&);
+
 };
 
 #endif //NEW_EQUIPMENT_H

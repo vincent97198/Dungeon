@@ -26,6 +26,11 @@ void Dungeon::Show_Status(Player &player) {
          << "Attack: " << player.getAttack() << '\n'
          << "Defense: " << player.getDefense() << '\n'
          << "Inventory: " << player.getInventory() << '\n'
-         << "Weapon: " << player.getEquip() << '\n'
-         << endl;
+         << "Weapon: " << player.getEquip("Weapon") << '\n';
+    if (player.getEquip("Weapon") != nullptr)
+        cout << "Weapon Durability: " << player.getEquip("Weapon")->getDurability() << '\n';
+    cout << "Armor: " << player.getEquip("Armor") << '\n';
+    if (player.getEquip("Armor") != nullptr)
+        cout << "Armor Durability: " << player.getEquip("Armor")->getDurability() << '\n';
+    cout << endl;
 }

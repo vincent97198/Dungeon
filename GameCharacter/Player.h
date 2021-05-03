@@ -38,9 +38,6 @@ private:
     void build_skill_Map(map<char, string> &);
 
 public:
-    Weapon *getWeapon() const;
-
-    Armor *getArmor() const;
 
     int getMaxMp() const;
 
@@ -66,7 +63,7 @@ public:
 
     void setInventory(const vector<Item *> &inventory);
 
-    Item *getEquip() const;
+    Equipment *getEquip(string) const;
 
     void Equip(Equipment *equip);
 

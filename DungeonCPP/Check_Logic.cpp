@@ -1,9 +1,9 @@
 #include "Dungeon.h"
 
 bool Dungeon::checkGameLogic() {    // End game if return false
-    if (player.getWeapon() != nullptr && player.getWeapon()->getDurability() <= 0)
+    if (player.getEquip("Weapon") != nullptr && player.getEquip("Weapon")->getDurability() <= 0)
         cout << Color::RED << "Your weapon is broken\n" << Color::Default << '\n';
-    if (player.getArmor() != nullptr && player.getArmor()->getDurability() <= 0)
+    if (player.getEquip("Armor") != nullptr && player.getEquip("Armor")->getDurability() <= 0)
         cout << Color::RED << "Your armor is broken\n" << Color::Default << '\n';
 
     if (player.checkIsDead()) {

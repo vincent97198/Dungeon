@@ -102,8 +102,12 @@ void Player::Equip(Equipment *Equip) {
     }
 }
 
-Item *Player::getEquip() const {
-    return dynamic_cast<Item *>(Player::weapon);
+Equipment* Player::getEquip(string equip) const {
+    if (equip == "Weapon")
+        return dynamic_cast<Equipment *>(Player::weapon);
+    else if (equip == "Armor")
+        return dynamic_cast<Equipment *>(Player::armor);
+    else exit(1);
 }
 
 void Player::saveFile(ofstream &os) {
@@ -239,6 +243,15 @@ void Player::triggerEvent(GameCharacter *player) {
         } else
             Player::curMP -= 5;
     }
+
+
+    cout << Screen::Shining << Color::Yellow << "Magic~~~" << endl << Screen::Closed;
+    cout << Color::Yellow  << "Magic Spell: ";
+    for(int i=0;i<15;++i){
+        char ch=Tools::gainRandomNumber(33,91);
+        cout << ch;
+    }
+    cout << endl << Screen::Closed;
 }
 
 int Player::getMaxMp() const {
@@ -247,12 +260,4 @@ int Player::getMaxMp() const {
 
 void Player::setMaxMp(int maxMp) {
     maxMP = maxMp;
-}
-
-Weapon *Player::getWeapon() const {
-    return weapon;
-}
-
-Armor *Player::getArmor() const {
-    return armor;
 }

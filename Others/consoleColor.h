@@ -14,7 +14,7 @@ namespace Color {
         Blue = 34,
         Purple = 35,
         Cyan = 36,
-        White = 37
+        Gray = 37
     };
 
     std::ostream &operator<<(std::ostream &os,frontColor color);
