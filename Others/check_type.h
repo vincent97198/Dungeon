@@ -7,6 +7,7 @@
 #include "GameCharacter/NPC.h"
 #include "Equipment/Equipment.h"
 #include "Equipment/Weapon.h"
+#include "Equipment/Armor.h"
 
 class Item;
 
@@ -26,6 +27,8 @@ namespace check_type {
     Equipment *isEquipmentType(Item *);
 
     Weapon *isWeaponType(Object *);
+
+    Armor *isArmorType(Object*);
 }
 
 #endif //NEW_CHECK_TYPE_H

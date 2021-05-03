@@ -26,15 +26,24 @@ private:
     Room *currentRoom;
     Room *previousRoom;
     int cur, pre;
+
+    int MP;
+
+    Weapon *weapon;
+    Armor *armor;
+    vector<Item *> inventory;
+    bool changeEquip(string);
+
 public:
+
+    int getMp() const;
+
+    void setMp(int mp);
+
     int getCur() const;
 
     int getPre() const;
 
-private:
-    Weapon *weapon;
-    vector<Item *> inventory;
-public:
     Room *getCurrentRoom() const;
 
     void setCurrentRoom(Room *currentRoom);

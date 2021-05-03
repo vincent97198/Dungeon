@@ -28,6 +28,7 @@ Player::Player() : GameCharacter() {
     Player::currentRoom = nullptr;
     Player::previousRoom = nullptr;
     Player::weapon = nullptr;
+    Player::armor=nullptr;
     Player::inventory.clear();
 }
 
@@ -39,6 +40,7 @@ Player::Player(string name, int maxHealth, int attack, int defense, Room *curren
     Player::previousRoom = nullptr;
     Player::inventory.clear();
     Player::weapon = nullptr;
+    Player::armor=nullptr;
 }
 
 void Player::addItem(Item *item) {
@@ -70,13 +72,33 @@ void Player::Equip(Equipment *Equip) {
     try {
         string Warning;
         Weapon *Debug_test = dynamic_cast<Weapon *>(Equip);
-        if (Debug_test == nullptr) throw (Warning = "BUG!!! Ambiguous Data Type. Weapon or Armor");
+        Armor *Debug_test2 = dynamic_cast<Armor *>(Equip);
+        if (Debug_test == nullptr && Debug_test2 == nullptr) throw (Warning = "BUG!!! Ambiguous Data Type. Weapon or Armor");
     }
     catch (string Warning) {
         cout << Color::RED << Warning << Color::Default << '\n';
     }
-    Player::weapon = dynamic_cast<Weapon *>(Equip);
-    Player::setAttack(Player::getAttack() + Player::weapon->getAttack());
+
+    Weapon *new_weapon = dynamic_cast<Weapon *>(Equip);
+    Armor *new_armor = dynamic_cast<Armor *>(Equip);
+
+    if (new_weapon != nullptr) {
+        if (weapon == nullptr) {
+            Player::setAttack(Player::getAttack() + new_weapon->getAttack());
+            weapon = new_weapon;
+        } else if (changeEquip(weapon->getName()))
+            Player::setAttack(Player::getAttack() + new_weapon->getAttack() - Player::weapon->getAttack());
+        weapon = new_weapon;
+    }
+
+    if (new_armor != nullptr) {
+        if (armor == nullptr) {
+            Player::setDefense(Player::getDefense() + new_armor->getDefense());
+            armor = new_armor;
+        } else if (changeEquip(armor->getName()))
+            Player::setDefense(Player::getDefense() + new_armor->getDefense() - Player::armor->getDefense());
+        armor = new_armor;
+    }
 }
 
 Item *Player::getEquip() const {
@@ -89,10 +111,18 @@ void Player::saveFile(ofstream &os) {
 
     os << currentRoom->getIndex() << '\n'
        << (previousRoom == nullptr ? -1 : previousRoom->getIndex()) << '\n';
+
+    os << MP;
+
     if (weapon != nullptr) {
         os << "Weapon\n";
         weapon->saveFile(os);
     } else os << "noWeapon\n";
+
+    if (armor != nullptr) {
+        os << "Armor\n";
+        armor->saveFile(os);
+    } else os << "noArmor\n";
 
     os << inventory.size() << '\n';
     for (auto iter:inventory) {
@@ -100,6 +130,8 @@ void Player::saveFile(ofstream &os) {
             os << "Weapon\n";
         else if (check_type::isItemType(iter) != nullptr)
             os << "Item\n";
+        else if (check_type::isArmorType(iter) != nullptr)
+            os << "Armor\n";
         iter->saveFile(os);
     }
 }
@@ -116,11 +148,18 @@ void Player::loadFile(ifstream &os) {
 
     os >> cur >> pre;
 
+    os >> MP;
+
     string type;
     os >> type;
     if (type == "Weapon") {
         weapon = new Weapon();
         weapon->loadFile(os);
+    }
+    os >> type;
+    if (type == "Armor") {
+        armor = new Armor();
+        armor->loadFile(os);
     }
 
     int SZ;
@@ -132,6 +171,8 @@ void Player::loadFile(ifstream &os) {
             item = new Weapon();
         else if (type == "Item")
             item = new Item();
+        else if (type == "Armor")
+            item = new Armor();
         item->loadFile(os);
         inventory.emplace_back(item);
     }
@@ -143,4 +184,25 @@ int Player::getCur() const {
 
 int Player::getPre() const {
     return pre;
+}
+
+bool Player::changeEquip(string str) {
+    cout << Color::Yellow
+         << "You have already equipped " << str << '\n'
+         << Color::Default;
+    map<char, string> true_false_Map;
+    true_false_Map['Y'] = "YES";
+    true_false_Map['N'] = "NO";
+    char type = Ask::Ask_oneAlphabet("Do you want to change your equipment?[Y/n]", true_false_Map);
+    if (type == 'Y')
+        return true;
+    else return false;
+}
+
+int Player::getMp() const {
+    return MP;
+}
+
+void Player::setMp(int mp) {
+    MP = mp;
 }

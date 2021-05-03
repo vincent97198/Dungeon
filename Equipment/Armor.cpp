@@ -25,5 +25,5 @@ void Armor::loadFile(ifstream &os) {
     this->setTag(base->getTag());
     this->setDurability(base->getDurability());
 
-    os >> defense
+    os >> defense;
 }

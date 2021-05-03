@@ -52,17 +52,19 @@ void NPC::saveFile(ofstream &os) {
     base.saveFile(os);
 
     os << script << '\n'
-    << commodity.size() << '\n';
-    for(auto iter:commodity){
+       << commodity.size() << '\n';
+    for (auto iter:commodity) {
         if (check_type::isWeaponType(iter) != nullptr)
             os << "Weapon\n";
         else if (check_type::isItemType(iter) != nullptr)
             os << "Item\n";
+        else if (check_type::isArmorType(iter) != nullptr)
+            os << "Armor\n";
         iter->saveFile(os);
     }
 }
 
-void NPC::loadFile(ifstream & os) {
+void NPC::loadFile(ifstream &os) {
     GameCharacter *base = new GameCharacter();
     base->loadFile(os);
     this->setMaxHealth(base->getMaxHealth());
@@ -75,13 +77,15 @@ void NPC::loadFile(ifstream & os) {
     int SZ;
     os >> script >> SZ;
     string type;
-    for(int i=0;i<SZ;++i){
+    for (int i = 0; i < SZ; ++i) {
         os >> type;
         Item *item;
         if (type == "Weapon")
             item = new Weapon();
         else if (type == "Item")
             item = new Item();
+        else if (type == "Armor")
+            item = new Armor();
         commodity.insert(item);
     }
 }

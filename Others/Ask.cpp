@@ -19,6 +19,7 @@ namespace Ask {
         cout << Color::Blue << output << Color::Default << '\n';
         for (auto &iter:MAP)
             cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\n';
+
         string input;
         do {
             getline(cin, input);
@@ -35,9 +36,12 @@ namespace Ask {
         for (auto &iter:MAP)
             cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\n';
 
+        cout << "(Q) Quit\n";
+
         string input;
         do {
             getline(cin, input);
+            if(input=="Q" || input=="q")    return;
         } while (!Tools::check_input_logic_multi_int(input, MAP));
 
         stringstream ss;

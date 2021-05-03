@@ -147,6 +147,8 @@ void Room::saveFile(ofstream &os) {
             os << "Weapon\n";
         else if (check_type::isItemType(iter) != nullptr)
             os << "Item\n";
+        else if (check_type::isArmorType(iter) != nullptr)
+            os << "Armor\n";
         iter->saveFile(os);
     }
 }
@@ -169,12 +171,14 @@ void Room::loadFile(ifstream &os) {
         Object *object;
         if (type == "Item")
             object = new Item();
-        else if(type == "Monster")
+        else if (type == "Monster")
             object = new Monster();
-        else if(type=="NPC")
+        else if (type == "NPC")
             object = new NPC();
-        else if(type=="Weapon")
+        else if (type == "Weapon")
             object = new Weapon();
+        else if (type == "Armor")
+            object = new Armor();
         object->loadFile(os);
         objects.insert(object);
     }

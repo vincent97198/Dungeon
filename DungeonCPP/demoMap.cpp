@@ -9,12 +9,14 @@ void Dungeon::createMap(int mapSize) {
 
     Item *item = new Item();
     Weapon *equip = new Weapon();
+    Armor *armor = new Armor();
     Item *item2 =new Item();
     set<Item*> demo_commodity;   demo_commodity.insert(item2);
     NPC *npc = new NPC("KING","DEMO",demo_commodity);
     Monster *monster2 = new Monster();
     Dungeon::rooms[0].addObject(item);
     Dungeon::rooms[0].addObject(equip);
+    Dungeon::rooms[0].addObject(armor);
     Dungeon::rooms[0].addObject(npc);
     Dungeon::rooms[1].addObject(monster2);
     Dungeon::rooms[3].setExit(true);

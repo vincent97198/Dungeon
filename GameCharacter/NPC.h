@@ -8,6 +8,7 @@
 #include "GameCharacter/Player.h"
 #include "Item.h"
 #include "Others/Ask.h"
+#include "Equipment/Armor.h"
 
 using namespace std;
 

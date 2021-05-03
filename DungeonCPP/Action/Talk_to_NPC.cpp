@@ -15,5 +15,4 @@ void Dungeon::Talk_to_NPC(Player *player) {
 
     NPC *npc = dynamic_cast<NPC *>(NPC_Map[NPC_index]);
     npc->triggerEvent(player);
-    cout << Screen::Clear;
 }
