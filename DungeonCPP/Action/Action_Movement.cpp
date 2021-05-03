@@ -22,19 +22,23 @@ void Dungeon::handleMovement() {
     switch (type) {
         case 'W':
             Dungeon::player.changeRoom(Dungeon::player.getCurrentRoom()->getUpRoom());
+            cout << Screen::Shining << Color::Yellow << "Walking" << endl << Screen::Closed;
             break;
         case 'S':
             Dungeon::player.changeRoom(Dungeon::player.getCurrentRoom()->getDownRoom());
+            cout << Screen::Shining << Color::Yellow << "Walking" << endl << Screen::Closed;
             break;
         case 'D':
             Dungeon::player.changeRoom(Dungeon::player.getCurrentRoom()->getRightRoom());
+            cout << Screen::Shining << Color::Yellow << "Walking" << endl << Screen::Closed;
             break;
         case 'A':
             Dungeon::player.changeRoom(Dungeon::player.getCurrentRoom()->getLeftRoom());
+            cout << Screen::Shining << Color::Yellow << "Walking" << endl << Screen::Closed;
             break;
         case 'N':
+            cout << Screen::Shining << Color::Yellow << "Looking around~" << endl << Screen::Closed;
             break;
     }
-    cout << Screen::Shining << Color::Yellow << "Walking" << endl << Screen::Closed;
     cout << Screen::Clear;
 }

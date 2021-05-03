@@ -27,7 +27,7 @@ namespace Tools {
 
     bool check_input_logic_oneAlphabet_Object(string &input,map<char,Object*> &MAP);
 
-    int gainRandomNumber(const int RangeL, const int RangeR);
+    int gainRandomNumber(int RangeL, int RangeR);
 
     int CeilDiv(int A, int B);
 }

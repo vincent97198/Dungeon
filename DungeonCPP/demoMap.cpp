@@ -36,7 +36,7 @@ void Dungeon::createMap(int mapSize,int Difficult) {
 #ifndef DEBUG
 
 void Dungeon::createMap(int mapSize, int Difficult) {
-    int Long = sqrt(mapSize);
+    int Long = sqrt(mapSize - 1);
     Dungeon::rooms.resize(mapSize);
 
     // assign room index
@@ -49,27 +49,36 @@ void Dungeon::createMap(int mapSize, int Difficult) {
             connect_MAP.emplace_back(i * Long + j);
     }
 
-    for (int i = Long - 1; i >= 0; --i)
-        swap(connect_MAP[i], connect_MAP[Tools::gainRandomNumber(0, i + 1)]);
+    for (int i = Long * Long - 1; i >= 0; --i) {
+        int randNumber = Tools::gainRandomNumber(0, i + 1);
+        swap(connect_MAP[i], connect_MAP[randNumber]);
+    }
 
-    for (int i = 1; i < Long - 1; ++i) {
-        for (int j = 1; j < Long - 1; ++j) {
-            int now = connect_MAP[i * Long + j],
-                    Up = connect_MAP[(i - 1) * Long + j],
-                    Down = connect_MAP[(i + 1) * Long + j],
-                    Left = connect_MAP[i * Long + j - 1],
-                    Right = connect_MAP[i * Long + j + 1];
-            rooms[now].setUpRoom(&rooms[Up]);
-            rooms[Up].setDownRoom(&rooms[now]);
 
-            rooms[now].setDownRoom(&rooms[Down]);
-            rooms[Down].setUpRoom(&rooms[now]);
+    for (int i = 0; i < Long; ++i) {
+        for (int j = 0; j < Long; ++j) {
+            int now = connect_MAP[i * Long + j];
 
-            rooms[now].setLeftRoom(&rooms[Left]);
-            rooms[Left].setRightRoom(&rooms[now]);
-
-            rooms[now].setRightRoom(&rooms[Right]);
-            rooms[Right].setLeftRoom(&rooms[now]);
+            if (i > 0) {
+                int Up = connect_MAP[(i - 1) * Long + j];
+                rooms[now].setUpRoom(&rooms[Up]);
+                rooms[Up].setDownRoom(&rooms[now]);
+            }
+            if (i < Long - 1) {
+                int Down = connect_MAP[(i + 1) * Long + j];
+                rooms[now].setDownRoom(&rooms[Down]);
+                rooms[Down].setUpRoom(&rooms[now]);
+            }
+            if (j > 0) {
+                int Left = connect_MAP[i * Long + j - 1];
+                rooms[now].setLeftRoom(&rooms[Left]);
+                rooms[Left].setRightRoom(&rooms[now]);
+            }
+            if (j < Long - 1) {
+                int Right = connect_MAP[i * Long + j + 1];
+                rooms[now].setRightRoom(&rooms[Right]);
+                rooms[Right].setLeftRoom(&rooms[now]);
+            }
         }
     }
 
@@ -83,15 +92,30 @@ void Dungeon::createMap(int mapSize, int Difficult) {
     }
 
     //assign NPC
-    for (int i = 0; i < (4 - Difficult * Long); ++i) {
+    for (int i = 0; i < (4 - Difficult) * Long; ++i) {
         set<Item *> commodity;
         int numberOfItem = Tools::gainRandomNumber(0, 4 - Difficult);
         for (int j = 0; j < numberOfItem; ++j) {
-            Item *item = new Item();
+            int randNum = Tools::gainRandomNumber(0, 3);
+            Item *item;
+            if (randNum == 0)
+                item = new Item();
+            else if (randNum == 1)
+                item = new Weapon();
+            else if (randNum == 2)
+                item = new Armor();
             commodity.insert(item);
         }
         NPC *npc = new NPC();
         npc->setCommodity(commodity);
+        rooms[Tools::gainRandomNumber(1, Long * Long)].addObject(npc);
+    }
+
+    //assign item on floor
+    for (int i = 0; i < (3 - Difficult) * Long; ++i){
+        int numberOfItem = Tools::gainRandomNumber(0, 4 - Difficult);
+        Item *item = new Item();
+        rooms[Tools::gainRandomNumber(1, Long * Long)].addObject(item);
     }
 }
 

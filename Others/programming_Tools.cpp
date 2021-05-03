@@ -4,13 +4,15 @@ namespace Tools {
     mt19937_64 RANDOM(time(NULL));
 
     void stringToUpper(string &str) {
-        for(int i=0;i<str.size();++i)
-            str[i]=toupper(str[i]);
+        for (int i = 0; i < str.size(); ++i)
+            str[i] = toupper(str[i]);
     }
 
-    int stringToint(string& str){
-        stringstream ss;    ss << str;
-        int ret;    ss >> ret;
+    int stringToint(string &str) {
+        stringstream ss;
+        ss << str;
+        int ret;
+        ss >> ret;
         return ret;
     }
 
@@ -32,7 +34,7 @@ namespace Tools {
         }
     }
 
-    bool check_input_logic_oneAlphabet_Object(string &input,map<char,Object*> &Map){
+    bool check_input_logic_oneAlphabet_Object(string &input, map<char, Object *> &Map) {
         try {
             string Warning;
             if (input.empty())
@@ -50,13 +52,13 @@ namespace Tools {
         }
     }
 
-    bool check_input_logic_multi_int(string &input, map<int, Object*> &Map) {
+    bool check_input_logic_multi_int(string &input, map<int, Object *> &Map) {
         try {
             string Warning;
             if (input.empty()) throw (Warning = "You didn't enter anything!");
             else {
                 for (char ch:input)
-                    if (!(ch <= '9' && ch >= '0') && ch!=' ') throw (Warning = "Wrong input");
+                    if (!(ch <= '9' && ch >= '0') && ch != ' ') throw (Warning = "Wrong input");
 
                 stringstream ss;
                 ss << input;
@@ -78,8 +80,8 @@ namespace Tools {
         }
     }
 
-    int gainRandomNumber(const int RangeL, const int RangeR) {   // left closed, right open
-        return ((int) Tools::RANDOM() % (RangeR - RangeL)) + RangeL;
+    int gainRandomNumber(int RangeL, int RangeR) {   // left closed, right open
+        return ( Tools::RANDOM() % (RangeR - RangeL)) + RangeL;
     }
 
     int CeilDiv(int A, int B) {
