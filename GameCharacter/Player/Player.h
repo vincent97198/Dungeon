@@ -28,6 +28,7 @@ private:
     int cur, pre;
 
     int curMP, maxMP;
+    int speed;
     Weapon *weapon;
     Armor *armor;
 
@@ -38,6 +39,10 @@ private:
     void build_skill_Map(map<char, string> &);
 
 public:
+
+    int getSpeed() const;
+
+    void setSpeed(int speed);
 
     int getMaxMp() const;
 
@@ -69,13 +74,11 @@ public:
 
     Player();
 
-    Player(string, int, int, int, int, Room *);
+    Player(string,int, int, int, int, int, Room *);
 
     ~Player();
 
     void addItem(Item *);
-
-    void increaseStates(int, int, int);
 
     void changeRoom(Room *);
 

@@ -8,10 +8,11 @@ Player::Player() : GameCharacter() {
     Player::inventory.clear();
     Player::maxMP = 10;
     Player::curMP = 10;
+    Player::speed = 10;
 }
 
 
-Player::Player(string name, int maxMP, int maxHealth, int attack, int defense, Room *currentRoom) : GameCharacter(name,
+Player::Player(string name,int speed ,int maxMP, int maxHealth, int attack, int defense, Room *currentRoom) : GameCharacter(name,
                                                                                                                   "Player",
                                                                                                                   maxHealth,
                                                                                                                   attack,
@@ -23,6 +24,7 @@ Player::Player(string name, int maxMP, int maxHealth, int attack, int defense, R
     Player::armor = nullptr;
     Player::maxMP = maxMP;
     Player::curMP = maxMP;
+    Player::speed = speed;
 }
 
 void Player::addItem(Item *item) {
