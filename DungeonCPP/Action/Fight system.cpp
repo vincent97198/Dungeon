@@ -19,6 +19,11 @@ void Dungeon::Fight(Player *player) {
         else player->getCurrentRoom()->popObject(monster);
     }
 
+    if(player->getWeapon()!=nullptr)
+        player->getWeapon()->setDurability(player->getWeapon()->getDurability()-Tools::gainRandomNumber(0,30));
+    if(player->getArmor()!=nullptr)
+        player->getArmor()->setDurability(player->getArmor()->getDurability()-Tools::gainRandomNumber(0,30));
+
     cout << Color::Yellow << "Fight END!!!\n" << Color::Default;
     cout << Screen::Clear;
 }

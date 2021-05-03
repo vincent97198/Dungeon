@@ -7,7 +7,8 @@ namespace Screen {
     enum Type{
         Clear=0,
         Shining=1,
-        Closed=2
+        Closed=2,
+        Clear_soon=3
     };
 
     std::ostream &operator<<(std::ostream&,Type);

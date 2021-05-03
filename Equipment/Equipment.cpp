@@ -1,12 +1,12 @@
 #include "Equipment.h"
 
 Equipment::Equipment() : Item("UNKNOWN_Equipment", "Equipment") {
-    const int INF = INT16_MAX;
+    const int INF = 100;
     Equipment::Durability = INF;
 }
 
 Equipment::Equipment(string name, string tag) : Item(name, tag) {
-    const int INF = INT16_MAX;
+    const int INF = 100;
     Equipment::Durability = INF;
 }
 

@@ -8,7 +8,7 @@ void Dungeon::build_pick_item_Map(map<int, Object *> &Pick_Item_Map) {
             Pick_Item_Map[Pick_Item_Index++] = iter;
 }
 
-void Dungeon::Pick_item(Player player) {
+void Dungeon::Pick_item(Player &player) {
     map<int, Object *> Pick_Item_Map;
     build_pick_item_Map(Pick_Item_Map);
 

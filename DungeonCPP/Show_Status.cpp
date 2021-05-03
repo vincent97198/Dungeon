@@ -16,12 +16,13 @@ ostream &operator<<(ostream &os, const vector<T> &v) {
 }
 
 
-void Dungeon::Show_Status(Player player) {
+void Dungeon::Show_Status(Player &player) {
     cout << endl;
     cout << Color::Blue << "=======Detail=======" << Color::Default << '\n'
          << "Name: " << Color::Yellow << player.getName() << '\n' << Color::Default
          << "Position: #" << player.getCurrentRoom()->getIndex() << '\n'
          << "Health: " << player.getCurrentHealth() << '/' << player.getMaxHealth() << '\n'
+         << "MP: " << player.getcurMp() << '/' << player.getMaxMp() << '\n'
          << "Attack: " << player.getAttack() << '\n'
          << "Defense: " << player.getDefense() << '\n'
          << "Inventory: " << player.getInventory() << '\n'

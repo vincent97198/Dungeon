@@ -15,6 +15,8 @@ void Dungeon::build_Action_Map(map<char, string> &Action_Map) {
         if (Dungeon::player.getCurrentRoom()->isItemOnFloor())
             Action_Map[Action_index++] = "Gain the item in the chest";
     }
+    if (Dungeon::player.getcurMp() > 0)
+        Action_Map[Action_index++] = "Use skill!";
     Action_Map[Action_index++] = "Save to file";
     Action_Map[Action_index++] = "Quit";
 }
@@ -30,6 +32,7 @@ void Dungeon::chooseAction() {
             if (iter->second == "Move") handleMovement();
             else if (iter->second == "Check Status") Show_Status(Dungeon::player);
             else if (iter->second == "Gain the item in the chest") Pick_item(Dungeon::player);
+            else if (iter->second == "Use skill!") Dungeon::player.triggerEvent(&player);
             else if (iter->second == "Fight!!!") Fight(&player);
             else if (iter->second == "Retreat~~~") Dungeon::player.changeRoom(Dungeon::player.getPreviousRoom());
             else if (iter->second == "Talk to NPC") Talk_to_NPC(&player);
@@ -39,6 +42,7 @@ void Dungeon::chooseAction() {
                      << '\n';
                 exit(0);
             }
+            player.setcurMp(min(player.getcurMp() + 1,player.getMaxMp()));
         }
     }
 

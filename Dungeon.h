@@ -22,9 +22,9 @@ private:
     Player player;
     vector<Room> rooms;
 
-    void Show_Status(Player);
+    void Show_Status(Player&);
 
-    void Pick_item(Player);
+    void Pick_item(Player&);
 
     void Fight(Player *);
 

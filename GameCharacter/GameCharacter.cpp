@@ -53,8 +53,6 @@ GameCharacter::GameCharacter(string name, string tag, int maxHealth, int attack,
     GameCharacter::defense = defense;
 }
 
-void GameCharacter::triggleEvent(GameCharacter *) {}
-
 void GameCharacter::saveFile(ofstream &os) {
     Object base = *this;
     base.saveFile(os);

@@ -41,8 +41,6 @@ public:
     void saveFile(ofstream &);
 
     void loadFile(ifstream &);
-
-    virtual void triggleEvent(GameCharacter *);
 };
 
 #endif // GAMECHARACTER_H_INCLUDED

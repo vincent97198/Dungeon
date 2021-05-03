@@ -28,19 +28,24 @@ Player::Player() : GameCharacter() {
     Player::currentRoom = nullptr;
     Player::previousRoom = nullptr;
     Player::weapon = nullptr;
-    Player::armor=nullptr;
+    Player::armor = nullptr;
     Player::inventory.clear();
+    Player::maxMP = 10;
+    Player::curMP = 10;
 }
 
-Player::Player(string name, int maxHealth, int attack, int defense, Room *currentRoom) : GameCharacter(name, "Player",
-                                                                                                       maxHealth,
-                                                                                                       attack,
-                                                                                                       defense) {
+Player::Player(string name, int maxMP, int maxHealth, int attack, int defense, Room *currentRoom) : GameCharacter(name,
+                                                                                                                  "Player",
+                                                                                                                  maxHealth,
+                                                                                                                  attack,
+                                                                                                                  defense) {
     Player::currentRoom = currentRoom;
     Player::previousRoom = nullptr;
     Player::inventory.clear();
     Player::weapon = nullptr;
-    Player::armor=nullptr;
+    Player::armor = nullptr;
+    Player::maxMP = maxMP;
+    Player::curMP = maxMP;
 }
 
 void Player::addItem(Item *item) {
@@ -48,12 +53,6 @@ void Player::addItem(Item *item) {
         Player::Equip(check_type::isEquipmentType(item));
     else
         inventory.emplace_back(item);
-}
-
-void Player::increaseStates(int maxHealth, int attack, int defense) {
-    GameCharacter::setMaxHealth(GameCharacter::getMaxHealth() + maxHealth);
-    GameCharacter::setAttack(GameCharacter::getAttack() + attack);
-    GameCharacter::setDefense(GameCharacter::getDefense() + defense);
 }
 
 void Player::changeRoom(Room *nextRoom) {
@@ -66,6 +65,7 @@ Player::~Player() {
     currentRoom = nullptr;
     previousRoom = nullptr;
     weapon = nullptr;
+    armor = nullptr;
 }
 
 void Player::Equip(Equipment *Equip) {
@@ -73,7 +73,8 @@ void Player::Equip(Equipment *Equip) {
         string Warning;
         Weapon *Debug_test = dynamic_cast<Weapon *>(Equip);
         Armor *Debug_test2 = dynamic_cast<Armor *>(Equip);
-        if (Debug_test == nullptr && Debug_test2 == nullptr) throw (Warning = "BUG!!! Ambiguous Data Type. Weapon or Armor");
+        if (Debug_test == nullptr && Debug_test2 == nullptr)
+            throw (Warning = "BUG!!! Ambiguous Data Type. Weapon or Armor");
     }
     catch (string Warning) {
         cout << Color::RED << Warning << Color::Default << '\n';
@@ -112,7 +113,7 @@ void Player::saveFile(ofstream &os) {
     os << currentRoom->getIndex() << '\n'
        << (previousRoom == nullptr ? -1 : previousRoom->getIndex()) << '\n';
 
-    os << MP;
+    os << curMP << maxMP;
 
     if (weapon != nullptr) {
         os << "Weapon\n";
@@ -148,7 +149,7 @@ void Player::loadFile(ifstream &os) {
 
     os >> cur >> pre;
 
-    os >> MP;
+    os >> curMP >> maxMP;
 
     string type;
     os >> type;
@@ -199,10 +200,59 @@ bool Player::changeEquip(string str) {
     else return false;
 }
 
-int Player::getMp() const {
-    return MP;
+int Player::getcurMp() const {
+    return curMP;
 }
 
-void Player::setMp(int mp) {
-    MP = mp;
+void Player::setcurMp(int mp) {
+    curMP = mp;
+}
+
+void Player::build_skill_Map(map<char, string> &MAP) {
+    char index = 'A';
+    if (Player::getcurMp() >= 10)
+        MAP[index++] = "Angel's blessing (full you health, cost: 10MP)";
+    if (Player::getcurMp() >= 5)
+        MAP[index++] = "Smith Master (full you equipment durability, cost: 5MP)";
+}
+
+void Player::triggerEvent(GameCharacter *player) {
+    map<char, string> skill_Map;
+    build_skill_Map(skill_Map);
+
+    cout << Screen::Clear_soon;
+    char type = Ask::Ask_oneAlphabet("=======Skill=======", skill_Map);
+    string skill = skill_Map[type];
+
+    if (skill == "Angel's blessing (full you health)") {
+        Player::setCurrentHealth(Player::getMaxHealth());
+        Player::curMP -= 10;
+    } else if (skill == "Smith Master (full you equipment durability)") {
+        if (Player::weapon != nullptr)
+            Player::weapon->setDurability(100);
+        if (Player::armor != nullptr)
+            Player::armor->setDurability(100);
+
+        if (Player::armor == nullptr && Player::weapon == nullptr) {
+            cout << endl;
+            cout << Color::RED << "No equipment!!!" << Color::Default << endl;
+        } else
+            Player::curMP -= 5;
+    }
+}
+
+int Player::getMaxMp() const {
+    return maxMP;
+}
+
+void Player::setMaxMp(int maxMp) {
+    maxMP = maxMp;
+}
+
+Weapon *Player::getWeapon() const {
+    return weapon;
+}
+
+Armor *Player::getArmor() const {
+    return armor;
 }

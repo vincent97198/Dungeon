@@ -27,18 +27,28 @@ private:
     Room *previousRoom;
     int cur, pre;
 
-    int MP;
-
+    int curMP, maxMP;
     Weapon *weapon;
     Armor *armor;
+
     vector<Item *> inventory;
+
     bool changeEquip(string);
 
+    void build_skill_Map(map<char, string> &);
+
 public:
+    Weapon *getWeapon() const;
 
-    int getMp() const;
+    Armor *getArmor() const;
 
-    void setMp(int mp);
+    int getMaxMp() const;
+
+    void setMaxMp(int maxMp);
+
+    int getcurMp() const;
+
+    void setcurMp(int mp);
 
     int getCur() const;
 
@@ -62,7 +72,7 @@ public:
 
     Player();
 
-    Player(string, int, int, int, Room *);
+    Player(string, int, int, int, int, Room *);
 
     ~Player();
 
@@ -75,6 +85,8 @@ public:
     void saveFile(ofstream &);
 
     void loadFile(ifstream &);
+
+    void triggerEvent(GameCharacter *);
 };
 
 #endif // PLAYER_H_INCLUDED
