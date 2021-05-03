@@ -21,20 +21,20 @@ private:
 
     void build_NPC_commodity_Map(map<int,Object*> &MAP);
 
-    void popCommodity(Item*);
-
 public:
     NPC();
 
     NPC(string, string, set<Item*>);
 
-    ~NPC() = default; // 亂寫
+    ~NPC();
 
     void triggerEvent(GameCharacter *);
 
     void saveFile(ofstream&);
 
     void loadFile(ifstream&);
+
+    void setCommodity(const set<Item *> &commodity);
 };
 
 

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <queue>
 #include <exception>
 #include <map>
 #include "GameCharacter/Player/Player.h"
@@ -47,7 +48,7 @@ private:
     void createPlayer();
 
     /* Create a map, which include several different rooms */
-    void createMap(int);
+    void createMap(int,int);
 
     /* Deal with player's moveing action */
     void handleMovement();

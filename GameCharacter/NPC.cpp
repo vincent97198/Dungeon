@@ -90,3 +90,15 @@ void NPC::loadFile(ifstream &os) {
     }
 }
 
+void NPC::setCommodity(const set<Item *> &commodity) {
+    NPC::commodity = commodity;
+}
+
+NPC::~NPC(){
+    for(auto iter:NPC::commodity){
+        delete iter;
+        iter=nullptr;
+    }
+    NPC::commodity.clear();
+    NPC::script.clear();
+}
