@@ -7,7 +7,7 @@
 #include "Others/consoleColor.h"
 #include "Others/programming_Tools.h"
 #include "GameCharacter.h"
-#include "Player.h"
+#include "GameCharacter/Player/Player.h"
 
 using namespace std;
 

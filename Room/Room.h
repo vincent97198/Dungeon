@@ -5,9 +5,10 @@
 #include <string>
 #include <set>
 #include "Object.h"
-#include "GameCharacter/Player.h"
+#include "GameCharacter/Player/Player.h"
 #include "GameCharacter/Monster.h"
 #include "GameCharacter/NPC.h"
+#include "Others/check_type.h"
 #include "Item.h"
 
 using namespace std;

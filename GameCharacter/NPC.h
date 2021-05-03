@@ -5,7 +5,7 @@
 #include <string>
 #include <set>
 #include "GameCharacter/GameCharacter.h"
-#include "GameCharacter/Player.h"
+#include "GameCharacter/Player/Player.h"
 #include "Item.h"
 #include "Others/Ask.h"
 #include "Equipment/Armor.h"

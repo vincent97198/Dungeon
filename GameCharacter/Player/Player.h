@@ -4,8 +4,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "GameCharacter.h"
-#include "Room.h"
+#include "GameCharacter/GameCharacter.h"
+#include "Room/Room.h"
 #include "Item.h"
 #include "Others/consoleColor.h"
 #include "Equipment/Weapon.h"

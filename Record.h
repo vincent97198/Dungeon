@@ -8,7 +8,7 @@
 #include "Item.h"
 #include "GameCharacter/Monster.h"
 #include "GameCharacter/NPC.h"
-#include "GameCharacter/Player.h"
+#include "GameCharacter/Player/Player.h"
 
 using namespace std;
 

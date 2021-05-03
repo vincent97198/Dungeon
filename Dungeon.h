@@ -5,10 +5,10 @@
 #include <vector>
 #include <exception>
 #include <map>
-#include "GameCharacter/Player.h"
+#include "GameCharacter/Player/Player.h"
 #include "GameCharacter/Monster.h"
 #include "GameCharacter/NPC.h"
-#include "Room.h"
+#include "Room/Room.h"
 #include "Record.h"
 #include "Others/check_type.h"
 #include "Others/programming_Tools.h"
