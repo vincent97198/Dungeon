@@ -46,11 +46,12 @@ GameCharacter::GameCharacter() : Object("UNKNOWN", "GameCharacter") {
     GameCharacter::defense = INF;
 }
 
-GameCharacter::GameCharacter(string name, string tag, int maxHealth, int attack, int defense) : Object(name, tag) {
+GameCharacter::GameCharacter(string name, string tag, int maxHealth, int attack, int defense,int speed) : Object(name, tag) {
     GameCharacter::maxHealth = maxHealth;
     GameCharacter::currentHealth = GameCharacter::maxHealth;
     GameCharacter::attack = attack;
     GameCharacter::defense = defense;
+    GameCharacter::speed = speed;
 }
 
 void GameCharacter::saveFile(ofstream &os) {
@@ -60,7 +61,8 @@ void GameCharacter::saveFile(ofstream &os) {
     os << currentHealth << '\n'
        << maxHealth << '\n'
        << attack << '\n'
-       << defense << '\n';
+       << defense << '\n'
+       << speed << '\n';
 }
 
 void GameCharacter::loadFile(ifstream &os) {
@@ -72,5 +74,14 @@ void GameCharacter::loadFile(ifstream &os) {
     os >> currentHealth
        >> maxHealth
        >> attack
-       >> defense;
+       >> defense
+       >> speed;
+}
+
+int GameCharacter::getSpeed() const {
+    return speed;
+}
+
+void GameCharacter::setSpeed(int speed) {
+    GameCharacter::speed = speed;
 }

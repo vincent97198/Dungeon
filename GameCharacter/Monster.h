@@ -17,7 +17,7 @@ private:
 public:
     Monster();
 
-    Monster(string, string, int, int, int);
+    Monster(string, string,int, int, int, int);
 
     ~Monster() = default; //亂寫
 

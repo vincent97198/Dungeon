@@ -48,11 +48,3 @@ int Player::getMaxMp() const {
 void Player::setMaxMp(int maxMp) {
     maxMP = maxMp;
 }
-
-int Player::getSpeed() const {
-    return speed;
-}
-
-void Player::setSpeed(int speed) {
-    Player::speed = speed;
-}

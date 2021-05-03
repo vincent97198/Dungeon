@@ -25,6 +25,7 @@ void Dungeon::Show_Status(Player &player) {
          << "MP: " << player.getcurMp() << '/' << player.getMaxMp() << '\n'
          << "Attack: " << player.getAttack() << '\n'
          << "Defense: " << player.getDefense() << '\n'
+         << "Speed: " << player.getSpeed() << '\n'
          << "Inventory: " << player.getInventory() << '\n'
          << "Weapon: " << player.getEquip("Weapon") << '\n';
     if (player.getEquip("Weapon") != nullptr)

@@ -7,7 +7,8 @@ void Player::saveFile(ofstream &os) {
     os << currentRoom->getIndex() << '\n'
        << (previousRoom == nullptr ? -1 : previousRoom->getIndex()) << '\n';
 
-    os << curMP << maxMP << speed;
+    os << curMP << '\n'
+       << maxMP << '\n';
 
     if (weapon != nullptr) {
         os << "Weapon\n";
@@ -43,7 +44,7 @@ void Player::loadFile(ifstream &os) {
 
     os >> cur >> pre;
 
-    os >> curMP >> maxMP >> speed;
+    os >> curMP >> maxMP;
 
     string type;
     os >> type;

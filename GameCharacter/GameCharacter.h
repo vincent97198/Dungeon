@@ -13,7 +13,13 @@ private:
     int currentHealth;
     int attack;
     int defense;
+    int speed;
 public:
+
+    int getSpeed() const;
+
+    void setSpeed(int speed);
+
     int getMaxHealth() const;
 
     void setMaxHealth(int maxHealth);
@@ -32,7 +38,7 @@ public:
 
     GameCharacter();
 
-    GameCharacter(string, string, int, int, int);
+    GameCharacter(string, string,int, int, int, int);
 
     ~GameCharacter() = default;
 
