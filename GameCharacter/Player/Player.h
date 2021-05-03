@@ -82,6 +82,8 @@ public:
     void loadFile(ifstream &);
 
     void triggerEvent(GameCharacter *);
+
+    void Show_status();
 };
 
 #endif // PLAYER_H_INCLUDED

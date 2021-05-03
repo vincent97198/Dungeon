@@ -30,7 +30,7 @@ void Dungeon::chooseAction() {
     for (auto iter = Action.begin(); iter != Action.end(); ++iter) {
         if (type == iter->first) {
             if (iter->second == "Move") handleMovement();
-            else if (iter->second == "Check Status") Show_Status(Dungeon::player);
+            else if (iter->second == "Check Status") Show_Status(&player);
             else if (iter->second == "Gain the item in the chest") Pick_item(Dungeon::player);
             else if (iter->second == "Use skill!") Dungeon::player.triggerEvent(&player);
             else if (iter->second == "Fight!!!") Fight(&player);

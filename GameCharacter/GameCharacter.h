@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "Object.h"
+#include "Others/consoleColor.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ public:
 
     GameCharacter();
 
-    GameCharacter(string, string,int, int, int, int);
+    GameCharacter(string, string, int, int, int, int);
 
     ~GameCharacter() = default;
 
@@ -47,6 +48,8 @@ public:
     void saveFile(ofstream &);
 
     void loadFile(ifstream &);
+
+    virtual void Show_status();
 };
 
 #endif // GAMECHARACTER_H_INCLUDED

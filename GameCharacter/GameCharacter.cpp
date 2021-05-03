@@ -46,7 +46,8 @@ GameCharacter::GameCharacter() : Object("UNKNOWN", "GameCharacter") {
     GameCharacter::defense = INF;
 }
 
-GameCharacter::GameCharacter(string name, string tag, int maxHealth, int attack, int defense,int speed) : Object(name, tag) {
+GameCharacter::GameCharacter(string name, string tag, int maxHealth, int attack, int defense, int speed) : Object(name,
+                                                                                                                  tag) {
     GameCharacter::maxHealth = maxHealth;
     GameCharacter::currentHealth = GameCharacter::maxHealth;
     GameCharacter::attack = attack;
@@ -84,4 +85,11 @@ int GameCharacter::getSpeed() const {
 
 void GameCharacter::setSpeed(int speed) {
     GameCharacter::speed = speed;
+}
+
+void GameCharacter::Show_status() {
+    cout << endl;
+    cout << Color::Blue << "=======Detail=======" << Color::Default << '\n'
+         << "Name: " << Color::Yellow << GameCharacter::getName() << '\n' << Color::Default
+         << endl;
 }

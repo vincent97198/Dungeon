@@ -49,3 +49,39 @@ Player::~Player() {
     weapon = nullptr;
     armor = nullptr;
 }
+
+template<class T>
+ostream &operator<<(ostream &os, const vector<T> &v) {
+    if (v.empty()) {
+        os << Color::Cyan << "Empty" << Color::Default;
+        return os;
+    }
+
+    int cnt = 0;
+    for (int i = 0; i < v.size(); ++i) {
+        auto &iter = v[i];
+        os << "No." << ++cnt << " " << iter << "\n"[i + 1 == v.size()];
+    }
+    return os;
+}
+
+
+void Player::Show_status() {
+    cout << endl;
+    cout << Color::Blue << "=======Player=======" << Color::Default << '\n'
+         << "Name: " << Color::Yellow << Player::getName() << '\n' << Color::Default
+         << "Position: #" << Player::getCurrentRoom()->getIndex() << '\n'
+         << "Health: " << Player::getCurrentHealth() << '/' << Player::getMaxHealth() << '\n'
+         << "MP: " << Player::getcurMp() << '/' << Player::getMaxMp() << '\n'
+         << "Attack: " << Player::getAttack() << '\n'
+         << "Defense: " << Player::getDefense() << '\n'
+         << "Speed: " << Player::getSpeed() << '\n'
+         << "Inventory: " << Player::getInventory() << '\n'
+         << "Weapon: " << Player::getEquip("Weapon") << '\n';
+    if (Player::getEquip("Weapon") != nullptr)
+        cout << "Weapon Durability: " << Player::getEquip("Weapon")->getDurability() << '\n';
+    cout << "Armor: " << Player::getEquip("Armor") << '\n';
+    if (Player::getEquip("Armor") != nullptr)
+        cout << "Armor Durability: " << Player::getEquip("Armor")->getDurability() << '\n';
+    cout << endl;
+}

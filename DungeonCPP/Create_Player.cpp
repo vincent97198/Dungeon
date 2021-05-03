@@ -17,5 +17,5 @@ void Dungeon::createPlayer() {
 
     Dungeon::player = Player(AskName(),Player_speed ,Player_maxMP, Player_maxHealth, Player_attack, Player_defense,
                              &Dungeon::rooms[0]);
-    Show_Status(player);
+    Show_Status(&player);
 }

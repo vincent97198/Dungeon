@@ -26,6 +26,8 @@ public:
     void saveFile(ofstream& os);
 
     void loadFile(ifstream &os);
+
+    void Show_status();
 };
 
 

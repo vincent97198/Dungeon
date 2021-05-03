@@ -14,6 +14,7 @@ void Dungeon::Fight(Player *player) {
     build_Monster_Map(monster_set);
 
     for (auto &monster:monster_set){
+        Show_Status(monster);
         monster->triggerEvent(dynamic_cast<GameCharacter *>(player));
         if(player->checkIsDead())   break;
         else player->getCurrentRoom()->popObject(monster);
