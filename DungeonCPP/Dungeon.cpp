@@ -6,7 +6,7 @@ void Dungeon::startGame(bool record) {
     if (record)
         Record::loadFromFile(&player, Dungeon::rooms);
     else {
-        createMap(20, 1);
+        createMap(30, 2);
         createPlayer();
     }
 }

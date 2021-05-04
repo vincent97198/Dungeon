@@ -94,16 +94,16 @@ void Dungeon::createMap(int mapSize, int Difficult) {
     //assign NPC
     for (int i = 0; i < (4 - Difficult) * Long; ++i) {
         set<Item *> commodity;
-        int numberOfItem = Tools::gainRandomNumber(0, 5 - Difficult);
+        int numberOfItem = Tools::gainRandomNumber(0, 4 - Difficult);
         for (int j = 0; j < numberOfItem; ++j) {
             int randNum = Tools::gainRandomNumber(0, 3);
             Item *item;
             if (randNum == 0)
                 item = new Item("diamond","item");
             else if (randNum == 1)
-                item = new Weapon("Stone Sword",100,Tools::gainRandomNumber(10,100));
+                item = new Weapon("Stone Sword",100,Tools::gainRandomNumber(10,40));
             else if (randNum == 2)
-                item = new Armor("Iron Armor",100,Tools::gainRandomNumber(15,100));
+                item = new Armor("Iron Armor",100,Tools::gainRandomNumber(15,40));
             commodity.insert(item);
         }
         NPC *npc = new NPC("Merchant","Hello, I am NPC.",commodity);

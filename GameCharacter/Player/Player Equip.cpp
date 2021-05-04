@@ -6,7 +6,6 @@ Equipment *Player::getEquip(string equip) const {
         return dynamic_cast<Equipment *>(Player::weapon);
     else if (equip == "Armor")
         return dynamic_cast<Equipment *>(Player::armor);
-    else exit(1);
 }
 
 

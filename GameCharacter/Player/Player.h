@@ -28,6 +28,7 @@ private:
     int cur, pre;
 
     int curMP, maxMP;
+
     Weapon *weapon;
     Armor *armor;
 
@@ -38,6 +39,10 @@ private:
     void build_skill_Map(map<char, string> &);
 
 public:
+
+    void setWeapon(Weapon *weapon);
+
+    void setArmor(Armor *armor);
 
     int getMaxMp() const;
 

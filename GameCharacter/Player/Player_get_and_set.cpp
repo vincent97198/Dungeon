@@ -48,3 +48,11 @@ int Player::getMaxMp() const {
 void Player::setMaxMp(int maxMp) {
     maxMP = maxMp;
 }
+
+void Player::setWeapon(Weapon *weapon) {
+    Player::weapon = weapon;
+}
+
+void Player::setArmor(Armor *armor) {
+    Player::armor = armor;
+}
