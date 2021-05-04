@@ -9,7 +9,7 @@ NPC::NPC() :
 NPC::NPC(string name, string script, set<Item *> commodity) :
         GameCharacter(name, "NPC", INT32_MAX, 0, INT32_MAX, INT32_MAX),
         script(script),
-        commodity(std::move(commodity)) {}
+        commodity(commodity) {}
 
 void NPC::build_NPC_commodity_Map(map<int, Object *> &MAP) {
     int cnt = 0;

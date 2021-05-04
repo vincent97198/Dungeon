@@ -96,7 +96,7 @@ void Dungeon::createMap(int mapSize, int Difficult) {
         set<Item *> commodity;
         int numberOfItem = Tools::gainRandomNumber(0, 5 - Difficult);
         for (int j = 0; j < numberOfItem; ++j) {
-            int randNum = Tools::gainRandomNumber(0, 5);
+            int randNum = Tools::gainRandomNumber(0, 3);
             Item *item;
             if (randNum == 0)
                 item = new Item("diamond","item");
