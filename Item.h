@@ -23,9 +23,9 @@ public:
 
     void loadFile(ifstream &);
 
-    bool operator<(const Item &) const;
+    void Show_Status(ostream&)const;
 
-    friend ostream &operator<<(ostream &os, const Item *item);
+    bool operator<(const Item &) const;
 };
 
 #endif // ITEM_H_INCLUDED

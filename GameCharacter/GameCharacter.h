@@ -49,7 +49,7 @@ public:
 
     void loadFile(ifstream &);
 
-    virtual void Show_status();
+    void Show_Status(ostream &) const;
 };
 
 #endif // GAMECHARACTER_H_INCLUDED

@@ -83,7 +83,7 @@ public:
 
     void triggerEvent(GameCharacter *);
 
-    void Show_status();
+    void Show_Status(ostream&)const;
 };
 
 #endif // PLAYER_H_INCLUDED

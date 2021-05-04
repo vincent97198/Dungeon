@@ -23,9 +23,9 @@ private:
     Player player;
     vector<Room> rooms;
 
-    void Show_Status(GameCharacter*);
+    void Show_Status(GameCharacter *);
 
-    void Pick_item(Player&);
+    void Pick_item(Player &);
 
     void Fight(Player *);
 
@@ -37,18 +37,18 @@ private:
 
     void build_Action_Map(map<char, string> &);
 
-    void build_pick_item_Map(map<int, Object*> &);
+    void build_pick_item_Map(map<int, Object *> &);
 
     void build_Monster_Map(vector<Monster *> &);
 
-    void build_NPC_Map(map<char, Object*> &MAP);
+    void build_NPC_Map(map<char, Object *> &MAP);
 
     /*Dungeon();*/
     /* Create a new player, and give him/her basic status */
     void createPlayer();
 
     /* Create a map, which include several different rooms */
-    void createMap(int,int);
+    void createMap(int, int);
 
     /* Deal with player's moveing action */
     void handleMovement();
@@ -69,9 +69,10 @@ private:
 
 public:
 
+    static bool DELAY, CLEAR;
+
     /* Deal with the whole game process */
     void runDungeon(bool);
 };
-
 
 #endif // DUNGEON_H_INCLUDED

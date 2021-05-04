@@ -12,7 +12,6 @@ void Player::triggerEvent(GameCharacter *player) {
     map<char, string> skill_Map;
     build_skill_Map(skill_Map);
 
-    cout << Screen::Clear_soon;
     char type = Ask::Ask_oneAlphabet("=======Skill=======", skill_Map);
     string skill = skill_Map[type];
 

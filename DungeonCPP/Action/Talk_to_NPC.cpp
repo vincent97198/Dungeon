@@ -15,4 +15,8 @@ void Dungeon::Talk_to_NPC(Player *player) {
 
     NPC *npc = dynamic_cast<NPC *>(NPC_Map[NPC_index]);
     npc->triggerEvent(player);
+    if (Dungeon::CLEAR)
+        cout << Screen::Clear;
+    else if(Dungeon::DELAY)
+        cout << Screen::Sleep1Sec;
 }

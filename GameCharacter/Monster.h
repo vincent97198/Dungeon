@@ -27,7 +27,7 @@ public:
 
     void loadFile(ifstream &os);
 
-    void Show_status();
+    void Show_Status(ostream&)const;
 };
 
 

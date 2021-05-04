@@ -15,12 +15,13 @@ Player::Player() : GameCharacter() {
 }
 
 
-Player::Player(string name,int speed ,int maxMP, int maxHealth, int attack, int defense, Room *currentRoom) : GameCharacter(name,
-                                                                                                                  "Player",
-                                                                                                                  maxHealth,
-                                                                                                                  attack,
-                                                                                                                  defense,
-                                                                                                                  speed) {
+Player::Player(string name, int speed, int maxMP, int maxHealth, int attack, int defense, Room *currentRoom)
+        : GameCharacter(name,
+                        "Player",
+                        maxHealth,
+                        attack,
+                        defense,
+                        speed) {
     Player::currentRoom = currentRoom;
     Player::previousRoom = nullptr;
     Player::inventory.clear();
@@ -43,6 +44,10 @@ void Player::changeRoom(Room *nextRoom) {
 }
 
 Player::~Player() {
+    for (Item *iter:inventory) {
+        delete iter;
+        iter = nullptr;
+    }
     inventory.clear();
     currentRoom = nullptr;
     previousRoom = nullptr;
@@ -59,29 +64,27 @@ ostream &operator<<(ostream &os, const vector<T> &v) {
 
     int cnt = 0;
     for (int i = 0; i < v.size(); ++i) {
-        auto &iter = v[i];
-        os << "No." << ++cnt << " " << iter << "\n"[i + 1 == v.size()];
+        const T &iter = v[i];
+        os << "No." << ++cnt << "\n" << iter << "\n"[i + 1 == v.size()];
     }
     return os;
 }
 
 
-void Player::Show_status() {
-    cout << endl;
-    cout << Color::Blue << "=======Player=======" << Color::Default << '\n'
-         << "Name: " << Color::Yellow << Player::getName() << '\n' << Color::Default
-         << "Position: #" << Player::getCurrentRoom()->getIndex() << '\n'
-         << "Health: " << Player::getCurrentHealth() << '/' << Player::getMaxHealth() << '\n'
-         << "MP: " << Player::getcurMp() << '/' << Player::getMaxMp() << '\n'
-         << "Attack: " << Player::getAttack() << '\n'
-         << "Defense: " << Player::getDefense() << '\n'
-         << "Speed: " << Player::getSpeed() << '\n'
-         << "Inventory: " << Player::getInventory() << '\n'
-         << "Weapon: " << Player::getEquip("Weapon") << '\n';
-    if (Player::getEquip("Weapon") != nullptr)
-        cout << "Weapon Durability: " << Player::getEquip("Weapon")->getDurability() << '\n';
-    cout << "Armor: " << Player::getEquip("Armor") << '\n';
-    if (Player::getEquip("Armor") != nullptr)
-        cout << "Armor Durability: " << Player::getEquip("Armor")->getDurability() << '\n';
-    cout << endl;
+void Player::Show_Status(ostream &os) const {
+    os << endl;
+    os << Color::Blue << "=======Player=======" << Color::Default << '\n'
+       << "Name: " << Color::Yellow << Player::getName() << '\n' << Color::Default
+       << "Position: #" << Player::getCurrentRoom()->getIndex() << '\n'
+       << "Health: " << Player::getCurrentHealth() << '/' << Player::getMaxHealth() << '\n'
+       << "MP: " << Player::getcurMp() << '/' << Player::getMaxMp() << '\n'
+       << "Attack: " << Player::getAttack() << '\n'
+       << "Defense: " << Player::getDefense() << '\n'
+       << "Speed: " << Player::getSpeed() << '\n'
+       << "Inventory: " << Player::getInventory() << '\n'
+       << "Weapon: " << Player::getEquip("Weapon") << '\n'
+       << "Armor: " << Player::getEquip("Armor") << '\n'
+       << Color::Blue << "====================" << Color::Default << '\n'
+       << endl;
+
 }

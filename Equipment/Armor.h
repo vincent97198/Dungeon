@@ -20,6 +20,8 @@ public:
     void saveFile(ofstream &);
 
     void loadFile(ifstream &);
+
+    void Show_Status(ostream&)const;
 };
 
 

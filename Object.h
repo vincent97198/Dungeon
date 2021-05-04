@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include "Others/consoleScreen.h"
+#include "Others/consoleColor.h"
 
 using namespace std;
 
@@ -31,8 +32,13 @@ public:
 
     virtual ~Object() = default;
 
-    virtual void saveFile(ofstream& os);
-    virtual void loadFile(ifstream&);
+    virtual void saveFile(ofstream &os);
+
+    virtual void loadFile(ifstream &);
+
+    virtual void Show_Status(ostream &) const;
+
+    friend ostream &operator<<(ostream &os, Object *item);
 };
 
 #endif // OBJECT_H_INCLUDED

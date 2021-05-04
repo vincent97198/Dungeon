@@ -61,13 +61,14 @@ void Monster::loadFile(ifstream &os) {
     os >> SAY;
 }
 
-void Monster::Show_status() {
-    cout << endl;
-    cout << Color::Blue << "=======Monster=======" << Color::Default << '\n'
-         << "Name: " << Color::Yellow << Monster::getName() << '\n' << Color::Default
-         << "Health: " << Monster::getCurrentHealth() << '/' << Monster::getMaxHealth() << '\n'
-         << "Attack: " << Monster::getAttack() << '\n'
-         << "Defense: " << Monster::getDefense() << '\n'
-         << "Speed: " << Monster::getSpeed() << '\n'
-         << endl;
+void Monster::Show_Status(ostream &os) const {
+    os << endl;
+    os << Color::Blue << "=======Monster=======" << Color::Default << '\n'
+       << "Name: " << Color::Yellow << Monster::getName() << '\n' << Color::Default
+       << "Health: " << Monster::getCurrentHealth() << '/' << Monster::getMaxHealth() << '\n'
+       << "Attack: " << Monster::getAttack() << '\n'
+       << "Defense: " << Monster::getDefense() << '\n'
+       << "Speed: " << Monster::getSpeed() << '\n'
+       << Color::Blue << "====================" << Color::Default << '\n'
+       << endl;
 }

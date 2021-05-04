@@ -1,13 +1,13 @@
 #include "NPC.h"
 
 NPC::NPC() :
-        GameCharacter("Steve", "NPC", INT32_MAX, 0, INT32_MAX,INT32_MAX),
+        GameCharacter("Steve", "NPC", INT32_MAX, 0, INT32_MAX, INT32_MAX),
         script("Hello, I'm Steve. I am NPC.") {
     NPC::commodity.clear();
 }
 
 NPC::NPC(string name, string script, set<Item *> commodity) :
-        GameCharacter(name, "NPC", INT32_MAX, 0, INT32_MAX,INT32_MAX),
+        GameCharacter(name, "NPC", INT32_MAX, 0, INT32_MAX, INT32_MAX),
         script(script),
         commodity(std::move(commodity)) {}
 
@@ -44,7 +44,6 @@ void NPC::triggerEvent(GameCharacter *character) {
             player->addItem(item);
         }
     }
-    cout << Screen::Clear;
 }
 
 void NPC::saveFile(ofstream &os) {
@@ -94,10 +93,10 @@ void NPC::setCommodity(const set<Item *> &commodity) {
     NPC::commodity = commodity;
 }
 
-NPC::~NPC(){
-    for(auto iter:NPC::commodity){
+NPC::~NPC() {
+    for (auto iter:NPC::commodity) {
         delete iter;
-        iter=nullptr;
+        iter = nullptr;
     }
     NPC::commodity.clear();
     NPC::script.clear();

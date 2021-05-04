@@ -8,14 +8,6 @@ bool Item::operator<(const Item &item) const {
     return this->getName() < item.getName();
 }
 
-ostream &operator<<(ostream &os, const Item *item) {
-    if (item == nullptr)
-        os << Color::Cyan <<  "Empty" << Color::Default;
-    else
-        os << item->getName();
-    return os;
-}
-
 void Item::saveFile(ofstream &os) {
     Object base = *this;
     base.saveFile(os);
@@ -26,4 +18,12 @@ void Item::loadFile(ifstream &os) {
     base->loadFile(os);
     this->setName(base->getName());
     this->setTag(base->getTag());
+}
+
+void Item::Show_Status(ostream &os) const {
+    os << endl;
+    os << Color::Blue << "=======Item=======" << Color::Default << '\n'
+       << "Name: " << Color::Yellow << Item::getName() << '\n' << Color::Default
+       << Color::Blue << "==================" << Color::Default << '\n'
+       << endl;
 }

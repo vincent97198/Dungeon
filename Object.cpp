@@ -39,3 +39,19 @@ void Object::loadFile(ifstream &os) {
     os >> name
        >> tag;
 }
+
+void Object::Show_Status(ostream &os) const {
+    os << endl;
+    os << Color::Blue << "=======Object=======" << Color::Default << '\n'
+       << "Name: " << Color::Yellow << Object::getName() << '\n' << Color::Default
+       << Color::Blue << "====================" << Color::Default << '\n'
+       << endl;
+}
+
+ostream &operator<<(ostream &os, Object *item) {
+    if (item == nullptr)
+        os << Color::Cyan << "Empty" << Color::Default;
+    else
+        item->Show_Status(os);
+    return os;
+}

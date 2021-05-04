@@ -87,9 +87,10 @@ void GameCharacter::setSpeed(int speed) {
     GameCharacter::speed = speed;
 }
 
-void GameCharacter::Show_status() {
-    cout << endl;
-    cout << Color::Blue << "=======Detail=======" << Color::Default << '\n'
-         << "Name: " << Color::Yellow << GameCharacter::getName() << '\n' << Color::Default
-         << endl;
+void GameCharacter::Show_Status(ostream &os) const {
+    os << endl;
+    os << Color::Blue << "=======Detail=======" << Color::Default << '\n'
+       << "Name: " << Color::Yellow << GameCharacter::getName() << '\n' << Color::Default
+       << Color::Blue << "====================" << Color::Default << '\n'
+       << endl;
 }

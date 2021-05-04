@@ -6,6 +6,7 @@
 #include <vector>
 #include <sstream>
 #include "Item.h"
+#include "Dungeon.h"
 #include "GameCharacter/Monster.h"
 #include "GameCharacter/NPC.h"
 #include "GameCharacter/Player/Player.h"

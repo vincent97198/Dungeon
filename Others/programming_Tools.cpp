@@ -81,7 +81,7 @@ namespace Tools {
     }
 
     int gainRandomNumber(int RangeL, int RangeR) {   // left closed, right open
-        return ( Tools::RANDOM() % (RangeR - RangeL)) + RangeL;
+        return (Tools::RANDOM() % (RangeR - RangeL)) + RangeL;
     }
 
     int CeilDiv(int A, int B) {

@@ -40,5 +40,8 @@ void Dungeon::handleMovement() {
             cout << Screen::Shining << Color::Yellow << "Looking around~" << endl << Screen::Closed;
             break;
     }
-    cout << Screen::Clear;
+    if (Dungeon::CLEAR)
+        cout << Screen::Clear;
+    else if(Dungeon::DELAY)
+        cout << Screen::Sleep1Sec;
 }

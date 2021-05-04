@@ -32,8 +32,11 @@ void Dungeon::chooseAction() {
             if (iter->second == "Move") handleMovement();
             else if (iter->second == "Check Status") Show_Status(&player);
             else if (iter->second == "Gain the item in the chest") Pick_item(Dungeon::player);
-            else if (iter->second == "Use skill!") Dungeon::player.triggerEvent(&player);
-            else if (iter->second == "Fight!!!") Fight(&player);
+            else if (iter->second == "Use skill!") {
+                if (Dungeon::CLEAR)
+                    cout << Screen::Clear_soon;
+                Dungeon::player.triggerEvent(&player);
+            } else if (iter->second == "Fight!!!") Fight(&player);
             else if (iter->second == "Retreat~~~") Dungeon::player.changeRoom(Dungeon::player.getPreviousRoom());
             else if (iter->second == "Talk to NPC") Talk_to_NPC(&player);
             else if (iter->second == "Save to file") Record::saveToFile(&player, rooms);
@@ -42,7 +45,7 @@ void Dungeon::chooseAction() {
                      << '\n';
                 exit(0);
             }
-            player.setcurMp(min(player.getcurMp() + 1,player.getMaxMp()));
+            player.setcurMp(min(player.getcurMp() + 1, player.getMaxMp()));
         }
     }
 

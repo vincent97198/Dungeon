@@ -18,7 +18,7 @@ namespace Ask {
         cout << endl;
         cout << Color::Blue << output << Color::Default << '\n';
         for (auto &iter:MAP)
-            cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\n';
+            cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\t' << iter.second << '\n';
 
         string input;
         do {
@@ -34,14 +34,14 @@ namespace Ask {
         cout << Color::Purple << "輸入括號裡的編號，可以一次輸入多個整數，多個整數請以空格隔開\n" << Color::Default;
 
         for (auto &iter:MAP)
-            cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\n';
+            cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\t' << iter.second << '\n';
 
         cout << "(Q) Quit\n";
 
         string input;
         do {
             getline(cin, input);
-            if(input=="Q" || input=="q")    return;
+            if (input == "Q" || input == "q") return;
         } while (!Tools::check_input_logic_multi_int(input, MAP));
 
         stringstream ss;

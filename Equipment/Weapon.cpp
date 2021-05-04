@@ -31,3 +31,14 @@ void Weapon::loadFile(ifstream &os) {
 
     os >> attack;
 }
+
+void Weapon::Show_Status(ostream &os) const {
+    os << endl;
+
+    os << Color::Blue << "=======Weapon=======" << Color::Default << '\n'
+       << "Weapon Name: " << Weapon::getName() << '\n'
+       << "Weapon Durability: " << Weapon::getDurability() << '\n'
+       << "Weapon Defense: " << Weapon::getAttack() << '\n'
+       << Color::Blue << "====================" << Color::Default << '\n'
+       << endl;
+}

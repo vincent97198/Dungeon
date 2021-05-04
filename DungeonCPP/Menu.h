@@ -2,6 +2,7 @@
 #define NEW_MENU_H
 
 #include "Dungeon.h"
+#include "Options.h"
 
 namespace Menu {
     void build_Menu_Map(map<char, string> &Menu_Map);

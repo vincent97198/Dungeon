@@ -28,10 +28,12 @@ ifstream &operator>>(ifstream &os, string &ret) {
 
 
 void Dungeon::startGame(bool record) {
-    if(record)
+    if (Dungeon::CLEAR)
+        cout << Screen::Clear;
+    if (record)
         Record::loadFromFile(&player, Dungeon::rooms);
-    else{
-        createMap(20,2);
+    else {
+        createMap(20, 2);
         createPlayer();
     }
 }
