@@ -15,10 +15,10 @@ void Player::triggerEvent(GameCharacter *player) {
     char type = Ask::Ask_oneAlphabet("=======Skill=======", skill_Map);
     string skill = skill_Map[type];
 
-    if (skill == "Angel's blessing (full you health)") {
+    if (skill == "Angel's blessing (full you health, cost: 10MP)") {
         Player::setCurrentHealth(Player::getMaxHealth());
         Player::curMP -= 10;
-    } else if (skill == "Smith Master (full you equipment durability)") {
+    } else if (skill == "Smith Master (full you equipment durability, cost: 5MP)") {
         if (Player::weapon != nullptr)
             Player::weapon->setDurability(100);
         if (Player::armor != nullptr)

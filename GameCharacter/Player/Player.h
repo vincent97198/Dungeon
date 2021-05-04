@@ -33,7 +33,7 @@ private:
 
     vector<Item *> inventory;
 
-    bool changeEquip(string);
+    bool changeEquip(string, Equipment *);
 
     void build_skill_Map(map<char, string> &);
 
@@ -69,7 +69,7 @@ public:
 
     Player();
 
-    Player(string,int, int, int, int, int, Room *);
+    Player(string, int, int, int, int, int, Room *);
 
     ~Player();
 
@@ -83,7 +83,7 @@ public:
 
     void triggerEvent(GameCharacter *);
 
-    void Show_Status(ostream&)const;
+    void Show_Status(ostream &) const;
 };
 
 #endif // PLAYER_H_INCLUDED

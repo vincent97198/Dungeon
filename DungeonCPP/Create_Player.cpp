@@ -9,11 +9,11 @@ string Dungeon::AskName() {
 }
 
 void Dungeon::createPlayer() {
-    const int Player_attack = 100000,
-            Player_maxHealth = 150000000,
-            Player_defense = 1,
+    const int Player_attack = 10,
+            Player_maxHealth = 35,
+            Player_defense = 0,
             Player_maxMP = 10,
-            Player_speed = 10;
+            Player_speed = 20;
 
     Dungeon::player = Player(AskName(),Player_speed ,Player_maxMP, Player_maxHealth, Player_attack, Player_defense,
                              &Dungeon::rooms[0]);

@@ -29,8 +29,9 @@ void Player::Equip(Equipment *Equip) {
         if (weapon == nullptr) {
             Player::setAttack(Player::getAttack() + new_weapon->getAttack());
             weapon = new_weapon;
-        } else if (changeEquip(weapon->getName())){
+        } else if (changeEquip(weapon->getName(),weapon)){
             Player::setAttack(Player::getAttack() + new_weapon->getAttack() - Player::weapon->getAttack());
+            Player::inventory.push_back(weapon);
             weapon = new_weapon;
         }
     }
@@ -39,17 +40,19 @@ void Player::Equip(Equipment *Equip) {
         if (armor == nullptr) {
             Player::setDefense(Player::getDefense() + new_armor->getDefense());
             armor = new_armor;
-        } else if (changeEquip(armor->getName())){
+        } else if (changeEquip(armor->getName(),armor)){
             Player::setDefense(Player::getDefense() + new_armor->getDefense() - Player::armor->getDefense());
+            Player::inventory.push_back(armor);
             armor = new_armor;
         }
     }
 }
 
-bool Player::changeEquip(string str) {
+bool Player::changeEquip(string str, Equipment* equip) {
     cout << Color::Yellow
          << "You have already equipped " << str << '\n'
-         << Color::Default;
+         << Color::Default
+         << equip;
     map<char, string> true_false_Map;
     true_false_Map['Y'] = "YES";
     true_false_Map['N'] = "NO";

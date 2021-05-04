@@ -19,18 +19,20 @@ void Monster::triggerEvent(GameCharacter *Enemy) {
         bool cnt = true;
         while (!Monster::checkIsDead() && !Enemy->checkIsDead()) {
             if (cnt)
-                Enemy->setCurrentHealth(Enemy->getCurrentHealth() - MyDPs);
+                Enemy->setCurrentHealth(Enemy->getCurrentHealth() - MyDPs * Tools::gainRandomNumber(8, 12) / 10);
             else
-                Monster::setCurrentHealth(Monster::getCurrentHealth() - EnemyDps);
+                Monster::setCurrentHealth(
+                        Monster::getCurrentHealth() - EnemyDps * Tools::gainRandomNumber(8, 12) / 10);
             cnt = !cnt;
         }
     } else {   // Enemy 先攻
         bool cnt = false;
         while (!Monster::checkIsDead() && !Enemy->checkIsDead()) {
             if (cnt)
-                Enemy->setCurrentHealth(Enemy->getCurrentHealth() - MyDPs);
+                Enemy->setCurrentHealth(Enemy->getCurrentHealth() - MyDPs * Tools::gainRandomNumber(8, 12) / 10);
             else
-                Monster::setCurrentHealth(Monster::getCurrentHealth() - EnemyDps);
+                Monster::setCurrentHealth(
+                        Monster::getCurrentHealth() - EnemyDps * Tools::gainRandomNumber(8, 12) / 10);
             cnt = !cnt;
         }
     }

@@ -35,5 +35,4 @@ void Dungeon::Fight(Player *player) {
         cout << Screen::Clear;
     else if (Dungeon::DELAY)
         cout << Screen::Sleep1Sec;
-
 }

@@ -25,7 +25,7 @@ void NPC::triggerEvent(GameCharacter *character) {
         build_NPC_commodity_Map(commodity_Map);
 
         vector<int> input;
-        Ask::Ask_multi_int("What do you want to buy?", commodity_Map, input);
+        Ask::Ask_multi_int("I can give you some gifts. What do you want?", commodity_Map, input);
 
         for (int POP:input) {
             Item *item = dynamic_cast<Item *>(commodity_Map[POP]);

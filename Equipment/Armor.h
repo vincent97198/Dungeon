@@ -13,7 +13,7 @@ private:
 public:
     Armor();
 
-    Armor(string name, int Durability, int attack);
+    Armor(string name, int Durability, int defense);
 
     int getDefense() const;
 
@@ -23,6 +23,5 @@ public:
 
     void Show_Status(ostream&)const;
 };
-
 
 #endif //NEW_ARMOR_H

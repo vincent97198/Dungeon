@@ -33,7 +33,7 @@ void Dungeon::startGame(bool record) {
     if (record)
         Record::loadFromFile(&player, Dungeon::rooms);
     else {
-        createMap(20, 1);
+        createMap(30, 1);
         createPlayer();
     }
 }
@@ -43,7 +43,6 @@ void Dungeon::runDungeon(bool record) {
     do {
         chooseAction();
         player.setcurMp(min(player.getcurMp() + 1, player.getMaxMp()));
-        if (!checkGameLogic())
-            exit(0);
     } while (checkGameLogic());
+    exit(0);
 }

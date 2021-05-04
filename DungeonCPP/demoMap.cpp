@@ -44,10 +44,10 @@ void Dungeon::createMap(int mapSize, int Difficult) {
         Dungeon::rooms[i].setIndex(i);
 
     vector<int> connect_MAP;
-    for (int i = 0; i < Long; ++i) {
-        for (int j = 0; j < Long; ++j)
-            connect_MAP.emplace_back(i * Long + j);
-    }
+        for (int i = 0; i < Long; ++i) {
+            for (int j = 0; j < Long; ++j)
+                connect_MAP.emplace_back(i * Long + j);
+        }
 
     for (int i = Long * Long - 1; i >= 0; --i) {
         int randNumber = Tools::gainRandomNumber(0, i + 1);
@@ -87,7 +87,7 @@ void Dungeon::createMap(int mapSize, int Difficult) {
 
     //assign Monster
     for (int i = 0; i < Difficult * Long; ++i) {
-        Monster *monster = new Monster();
+        Monster *monster = new Monster("DANGER_monster","RRrrrrrr",Tools::gainRandomNumber(11,50),Tools::gainRandomNumber(0,12),Tools::gainRandomNumber(0,5),Tools::gainRandomNumber(1,100));
         rooms[Tools::gainRandomNumber(1, Long * Long)].addObject(monster);
     }
 
@@ -99,22 +99,21 @@ void Dungeon::createMap(int mapSize, int Difficult) {
             int randNum = Tools::gainRandomNumber(0, 3);
             Item *item;
             if (randNum == 0)
-                item = new Item();
+                item = new Item("diamond","item");
             else if (randNum == 1)
-                item = new Weapon();
+                item = new Weapon("Stone Sword",100,Tools::gainRandomNumber(10,100));
             else if (randNum == 2)
-                item = new Armor();
+                item = new Armor("Iron Armor",100,Tools::gainRandomNumber(15,100));
             commodity.insert(item);
         }
-        NPC *npc = new NPC();
-        npc->setCommodity(commodity);
+        NPC *npc = new NPC("Merchant","Hello, I am NPC.",commodity);
         rooms[Tools::gainRandomNumber(1, Long * Long)].addObject(npc);
     }
 
     //assign item on floor
     for (int i = 0; i < (3 - Difficult) * Long; ++i){
         int numberOfItem = Tools::gainRandomNumber(0, 4 - Difficult);
-        Item *item = new Item();
+        Item *item = new Item("crystal","item");
         rooms[Tools::gainRandomNumber(1, Long * Long)].addObject(item);
     }
 }
