@@ -42,5 +42,8 @@ void Dungeon::runDungeon(bool record) {
     startGame(record);
     do {
         chooseAction();
+        player.setcurMp(min(player.getcurMp() + 1, player.getMaxMp()));
+        if (!checkGameLogic())
+            exit(0);
     } while (checkGameLogic());
 }

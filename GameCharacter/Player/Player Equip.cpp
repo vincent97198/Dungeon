@@ -29,18 +29,20 @@ void Player::Equip(Equipment *Equip) {
         if (weapon == nullptr) {
             Player::setAttack(Player::getAttack() + new_weapon->getAttack());
             weapon = new_weapon;
-        } else if (changeEquip(weapon->getName()))
+        } else if (changeEquip(weapon->getName())){
             Player::setAttack(Player::getAttack() + new_weapon->getAttack() - Player::weapon->getAttack());
-        weapon = new_weapon;
+            weapon = new_weapon;
+        }
     }
 
     if (new_armor != nullptr) {
         if (armor == nullptr) {
             Player::setDefense(Player::getDefense() + new_armor->getDefense());
             armor = new_armor;
-        } else if (changeEquip(armor->getName()))
+        } else if (changeEquip(armor->getName())){
             Player::setDefense(Player::getDefense() + new_armor->getDefense() - Player::armor->getDefense());
-        armor = new_armor;
+            armor = new_armor;
+        }
     }
 }
 
