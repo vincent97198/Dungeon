@@ -8,9 +8,12 @@ bool Dungeon::DELAY = true;
 bool Dungeon::CLEAR = true;
 
 int main() {
-    ifstream file("setting.txt");
-    file >> Dungeon::DELAY
-         >> Dungeon::CLEAR;
+    ifstream file2("setting.txt");
+    if(file2){
+        file2 >> Dungeon::DELAY
+              >> Dungeon::CLEAR;
+        file2.close();
+    }
 #ifdef WINDOW
     Dungeon::CLEAR = false;
 #endif

@@ -33,10 +33,5 @@ void Player::triggerEvent(GameCharacter *player) {
 
 
     cout << Screen::Shining << Color::Yellow << "Magic~~~" << endl << Screen::Closed;
-    cout << Color::Yellow << "Magic Spell: ";
-    for (int i = 0; i < 15; ++i) {
-        char ch = Tools::gainRandomNumber(33, 91);
-        cout << ch;
-    }
     cout << endl << Screen::Closed;
 }

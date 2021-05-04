@@ -1,6 +1,6 @@
 #include "Dungeon.h"
 
-// #define DEBUG
+/*#define DEBUG*/
 
 #ifdef DEBUG
 
@@ -94,9 +94,9 @@ void Dungeon::createMap(int mapSize, int Difficult) {
     //assign NPC
     for (int i = 0; i < (4 - Difficult) * Long; ++i) {
         set<Item *> commodity;
-        int numberOfItem = Tools::gainRandomNumber(0, 4 - Difficult);
+        int numberOfItem = Tools::gainRandomNumber(0, 5 - Difficult);
         for (int j = 0; j < numberOfItem; ++j) {
-            int randNum = Tools::gainRandomNumber(0, 3);
+            int randNum = Tools::gainRandomNumber(0, 5);
             Item *item;
             if (randNum == 0)
                 item = new Item("diamond","item");

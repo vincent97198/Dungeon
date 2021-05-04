@@ -36,5 +36,6 @@ namespace Options {
         ofstream file("setting.txt");
         file << Dungeon::DELAY << '\n'
              << Dungeon::CLEAR << '\n';
+        file.close();
     }
 }

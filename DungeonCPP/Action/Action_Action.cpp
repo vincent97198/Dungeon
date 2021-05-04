@@ -15,7 +15,7 @@ void Dungeon::build_Action_Map(map<char, string> &Action_Map) {
         if (Dungeon::player.getCurrentRoom()->isItemOnFloor())
             Action_Map[Action_index++] = "Gain the item in the chest";
     }
-    if (Dungeon::player.getcurMp() > 0)
+    if (Dungeon::player.getcurMp() > 5)
         Action_Map[Action_index++] = "Use skill!";
     Action_Map[Action_index++] = "Save to file";
     Action_Map[Action_index++] = "Quit";
