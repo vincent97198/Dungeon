@@ -82,8 +82,8 @@ void Player::Show_Status(ostream &os) const {
        << "Defense: " << Player::getDefense() << '\n'
        << "Speed: " << Player::getSpeed() << '\n'
        << "Inventory: " << Player::getInventory() << '\n'
-       << "Weapon: " << Player::getEquip("Weapon") << '\n'
-       << "Armor: " << Player::getEquip("Armor") << '\n'
+       << "Weapon: \n" << Player::getEquip("Weapon") << '\n'
+       << "Armor: \n" << Player::getEquip("Armor") << '\n'
        << Color::Blue << "====================" << Color::Default << '\n'
        << endl;
 
