@@ -24,10 +24,10 @@ void Player::saveFile(ofstream &os) {
     for (auto iter:inventory) {
         if (check_type::isWeaponType(iter) != nullptr)
             os << "Weapon\n";
-        else if (check_type::isItemType(iter) != nullptr)
-            os << "Item\n";
         else if (check_type::isArmorType(iter) != nullptr)
             os << "Armor\n";
+        else if (check_type::isItemType(iter) != nullptr)
+            os << "Item\n";
         iter->saveFile(os);
     }
 }

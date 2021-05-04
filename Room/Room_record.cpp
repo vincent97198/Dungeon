@@ -1,6 +1,5 @@
 #include "Room/Room.h"
 
-
 void Room::saveFile(ofstream &os) {
     os << index << '\n'
        << (upRoom == nullptr ? -1 : upRoom->getIndex()) << '\n'
@@ -20,10 +19,10 @@ void Room::saveFile(ofstream &os) {
             os << "Monster\n";
         else if (check_type::isWeaponType(iter) != nullptr)
             os << "Weapon\n";
-        else if (check_type::isItemType(iter) != nullptr)
-            os << "Item\n";
         else if (check_type::isArmorType(iter) != nullptr)
             os << "Armor\n";
+        else if (check_type::isItemType(iter) != nullptr)
+            os << "Item\n";
         iter->saveFile(os);
     }
 }

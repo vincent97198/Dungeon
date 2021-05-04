@@ -10,7 +10,7 @@ Monster::Monster(string name, string SAY, int health, int attack, int defense, i
           SAY(SAY) {}
 
 void Monster::triggerEvent(GameCharacter *Enemy) {
-    cout << Color::Green << Monster::SAY << Color::Default << '\n';
+    cout << Color::Green << Monster::getName() << ":\t" << Monster::SAY << Color::Default << '\n';
 
     int MyDPs = max(0, Monster::getAttack() - Enemy->getDefense()),
             EnemyDps = max(0, Enemy->getAttack() - Monster::getDefense());

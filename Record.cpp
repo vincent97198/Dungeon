@@ -32,8 +32,9 @@ namespace Record {
         int SZ;
         record >> SZ;
         for(int i=0;i<SZ;++i){
-            Room room;  room.loadFile(record);
-            MAP.emplace_back(room);
+            Room room;
+            room.loadFile(record);
+            MAP.push_back(room);
         }
 
         player->setCurrentRoom(&MAP[player->getCur()]);

@@ -10,7 +10,7 @@ string Dungeon::AskName() {
 
 void Dungeon::createPlayer() {
     const int Player_attack = 10,
-            Player_maxHealth = 35,
+            Player_maxHealth = 45,
             Player_defense = 0,
             Player_maxMP = 10,
             Player_speed = 20;

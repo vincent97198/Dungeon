@@ -55,10 +55,10 @@ void NPC::saveFile(ofstream &os) {
     for (auto iter:commodity) {
         if (check_type::isWeaponType(iter) != nullptr)
             os << "Weapon\n";
-        else if (check_type::isItemType(iter) != nullptr)
-            os << "Item\n";
         else if (check_type::isArmorType(iter) != nullptr)
             os << "Armor\n";
+        else if (check_type::isItemType(iter) != nullptr)
+            os << "Item\n";
         iter->saveFile(os);
     }
 }
@@ -85,6 +85,7 @@ void NPC::loadFile(ifstream &os) {
             item = new Item();
         else if (type == "Armor")
             item = new Armor();
+        item->loadFile(os);
         commodity.insert(item);
     }
 }
