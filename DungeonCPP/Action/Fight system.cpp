@@ -8,7 +8,8 @@ void Dungeon::build_Monster_Map(vector<Monster *> &MAP) {
 }
 
 void Dungeon::Fight(Player *player) {
-    cout << Screen::Shining << Color::Yellow << "Fighting!!!" << endl << Color::Default << Screen::Closed;
+    if (Dungeon::DELAY)
+        cout << Screen::Shining << Color::Yellow << "Fighting!!!" << endl << Color::Default << Screen::Closed;
 
     vector<Monster *> monster_set;
     build_Monster_Map(monster_set);
@@ -32,7 +33,7 @@ void Dungeon::Fight(Player *player) {
         cout << Screen::Sleep5sec;
     if (Dungeon::CLEAR)
         cout << Screen::Clear;
-    else if(Dungeon::DELAY)
+    else if (Dungeon::DELAY)
         cout << Screen::Sleep1Sec;
 
 }

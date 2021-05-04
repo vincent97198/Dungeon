@@ -21,7 +21,6 @@ void Item::loadFile(ifstream &os) {
 }
 
 void Item::Show_Status(ostream &os) const {
-    os << endl;
     os << Color::Blue << "=======Item=======" << Color::Default << '\n'
        << "Name: " << Color::Yellow << Item::getName() << '\n' << Color::Default
        << Color::Blue << "==================" << Color::Default << '\n'

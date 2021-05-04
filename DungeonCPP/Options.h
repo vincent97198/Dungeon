@@ -2,6 +2,7 @@
 #define NEW_OPTIONS_H
 
 #include "Dungeon.h"
+#include "Others/console.h"
 
 using namespace std;
 

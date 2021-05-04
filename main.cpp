@@ -1,5 +1,6 @@
 #include "Dungeon.h"
 #include "DungeonCPP/Menu.h"
+#include "Others/console.h"
 
 using namespace std;
 
@@ -10,6 +11,10 @@ int main() {
     ifstream file("setting.txt");
     file >> Dungeon::DELAY
          >> Dungeon::CLEAR;
+#ifdef WINDOW
+    Dungeon::CLEAR = false;
+#endif
+
     Dungeon dungeon;
     while (1) Menu::choose(dungeon);
 

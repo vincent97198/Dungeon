@@ -29,7 +29,6 @@ void Armor::loadFile(ifstream &os) {
 }
 
 void Armor::Show_Status(ostream &os) const {
-    os << endl;
     os << Color::Blue << "=======Armor=======" << Color::Default << '\n'
        << "Armor Name: " << Armor::getName() << '\n'
        << "Armor Durability: " << Armor::getDurability() << '\n'

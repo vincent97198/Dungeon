@@ -18,7 +18,7 @@ namespace Ask {
         cout << endl;
         cout << Color::Blue << output << Color::Default << '\n';
         for (auto &iter:MAP)
-            cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\t' << iter.second << '\n';
+            cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\n' << iter.second << '\n';
 
         string input;
         do {
@@ -31,10 +31,10 @@ namespace Ask {
     void Ask_multi_int(string output, map<int, Object *> &MAP, vector<int> &outputType) {
         cout << endl;
         cout << Color::Blue << output << Color::Default << '\n';
-        cout << Color::Purple << "輸入括號裡的編號，可以一次輸入多個整數，多個整數請以空格隔開\n" << Color::Default;
+        cout << Color::Purple << "Input the number in the brackets. It is available to input several integer separated with space\n" << Color::Default;
 
         for (auto &iter:MAP)
-            cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\t' << iter.second << '\n';
+            cout << '(' << iter.first << ')' << '\t' << iter.second->getName() << '\n' << iter.second << '\n';
 
         cout << "(Q) Quit\n";
 

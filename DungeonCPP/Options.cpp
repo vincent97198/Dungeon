@@ -8,10 +8,12 @@ namespace Options {
             Options_Map[Options_index++] = "Open Delay";
         else
             Options_Map[Options_index++] = "Close Delay";
+#ifndef WINDOW
         if (!Dungeon::CLEAR)
             Options_Map[Options_index++] = "Open clear screen";
         else
             Options_Map[Options_index++] = "Close clear screen";
+#endif
         Options_Map[Options_index++] = "Quit";
     }
 
