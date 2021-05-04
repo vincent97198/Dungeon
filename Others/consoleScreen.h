@@ -3,6 +3,12 @@
 
 #include <ostream>
 #include <string>
+#include <thread>
+#include "console.h"
+
+#ifdef WINDOW
+#include <windows.h>
+#endif
 
 namespace Screen {
     enum Type {
@@ -10,7 +16,7 @@ namespace Screen {
         Shining = 1,
         Closed = 2,
         Clear_soon = 3,
-        Sleep = 4,
+        Sleep5sec = 4,
         Sleep1Sec=5
     };
 

@@ -29,7 +29,7 @@ void Dungeon::Fight(Player *player) {
 
     cout << Color::Yellow << "Fight END!!!\n" << Color::Default;
     if (Dungeon::DELAY)
-        cout << Screen::Sleep;
+        cout << Screen::Sleep5sec;
     if (Dungeon::CLEAR)
         cout << Screen::Clear;
     else if(Dungeon::DELAY)

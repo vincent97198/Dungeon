@@ -3,6 +3,7 @@
 #include <ostream>
 #include <thread>
 #include <chrono>
+#include "console.h"
 
 namespace Color {
     enum frontColor{
