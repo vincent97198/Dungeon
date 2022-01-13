@@ -7,7 +7,7 @@
 ---
 ### English version
 
-**Dungeon** is a RPG-based game made by C++ 17. Players can go on an adventure in **Dungeon**. Fighting with monsters, talking to NPC and using the powerful magic help players to escape from **Dungeon**.
+**Dungeon** is a RPG-based game made by C++ 17. Players can go on an adventure in **Dungeon**. Fighting with monsters, talking to NPC and using the powerful magic help players to escape **Dungeon**.
 
 By using terminal, players can control the character.
 
